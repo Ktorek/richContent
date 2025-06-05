@@ -1,0 +1,26 @@
+https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda1.webp
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girlanda solarna Sollis Lumiled 20m z pilotem</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .feature-card:hover {
+      transform: scale(1.05);
+      transition: 0.3s ease;
+    }
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Top bar -->
+  <div class="bg-yellow-400 text-white text-center py-2 font-semibold tracking-wide"> </div>
+
+<p> taki tam content tutaj </p>
+<img src="/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda1.webp">
