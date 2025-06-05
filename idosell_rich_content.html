@@ -179,18 +179,25 @@
 
         /* Sekcja 3 - Call to action */
         .cta-section {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1200x400/4a90a4/ffffff?text=Background+Image');
+            background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_2.webp');
             background-size: cover;
             background-position: center;
-            padding: 80px 20px;
-            text-align: center;
-            color: white;
+            width: 100%; /* Zajmuje pełną szerokość rodzica (.main-container) */
+            aspect-ratio: 1921 / 288; /* Utrzymuje proporcje obrazu */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            container-type: inline-size; /* Dla jednostki cqi w tytule */
+            /* Usunięto stary padding, text-align i color */
         }
 
-        .cta-title {
-            font-size: 32px;
-            font-weight: normal;
+        .cta-main-title {
+            font-size: 4cqi;
+            font-weight: bold; /* Podobnie jak .product-title */
+            color: white;
             margin: 0;
+            line-height: 1; /* Podobnie jak .product-title */
+            text-align: center; /* Dodatkowe wyśrodkowanie tekstu, jeśli jest wieloliniowy */
         }
 
         /* Responsywność */
@@ -214,14 +221,8 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-            
-            .cta-title {
-                font-size: 24px;
-            }
-            
-            .cta-section {
-                padding: 60px 15px;
-            }
+            /* Usunięto responsywne style dla .cta-section padding i .cta-title, 
+               gdyż nowa struktura i cqi radzą sobie z tym inaczej */
         }
 
         @media (max-width: 480px) {
@@ -232,10 +233,7 @@
             .product-title {
                 font-size: 28px;
             }
-            
-            .cta-title {
-                font-size: 20px;
-            }
+            /* Usunięto responsywne style dla .cta-title */
         }
     </style>
 </head>
@@ -306,5 +304,13 @@
             </div>
         </section>
 
-        <!-- Sekcja 3: Call to action -->
+         <!-- Sekcja 3: Call to action -->
         <section class="section cta-section">
+            <h2 class="cta-main-title">Poznaj możliwości girlandy SOLLIS</h2>
+        </section>
+
+        <!-- Sekcja 4: Pusta sekcja -->
+        <section class="section empty-section-4">
+            <!-- Content for section 4 will go here -->
+        </section>
+
