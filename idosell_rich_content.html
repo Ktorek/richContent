@@ -9,9 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --brand-green: #1AA278;
+            --dark-text: #292929;
+        }
+
         .feature-item:hover {
-            transform: scale(1.05);
-            transition: 0.3s ease;
+            transform: scale(1.15);
+            transition: 0.66s ease-in;
             }
             .carousel::-webkit-scrollbar {
             display: none;
@@ -30,15 +35,16 @@
         /* Sekcja 1 - Header produktu */
         .product-header {
             background-color: #f5f5f5;
-            margin-top: 10px;
+            margin-top: 0.977cqi; /* 0.651 * 1.5 */
             /* Usunięto ogólny padding, aby obraz mógł dochodzić do krawędzi */
-            padding-left: 25px; /* Zachowujemy padding dla bloku tekstowego */
+            padding-left: 2.442cqi; /* 1.628 * 1.5 */
             padding-top: 0;
             padding-bottom: 0;
             padding-right: 0;
             display: flex;
+            container-type: inline-size; /* Define as a query container */
             align-items: stretch;
-            gap: 20px;
+            gap: 1.953cqi; /* 1.302 * 1.5 */
         }
 
         .product-info {
@@ -46,49 +52,68 @@
             padding-top: 25px;
             padding-bottom: 25px;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            flex-direction: column; /* Already here, just for context */
+            justify-content: space-between; /* Already here, just for context */
         }
 
         .brand-logo {
-            color: #4CAF50;
+            color: var(--brand-green);
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
+            font-size: 1.758cqi; /* 1.172 * 1.5 */
+            margin-bottom: 0.977cqi; /* 0.651 * 1.5 */
+        }
+
+        .brand-logo img {
+            height: 3.906cqi; /* 2.604 * 1.5 */
         }
 
         .product-title-group .green-line {
-            width: 40px;
-            height: 3px; /* Możesz dostosować wysokość linii */
-            background-color: #4CAF50; /* Zielony kolor linii */
-            margin-top: 5px; /* Odstęp od podtytułu */
+            width: 3.906cqi; /* 2.604 * 1.5 */
+            height: 0.293cqi; /* 0.195 * 1.5 */
+            background-color: var(--brand-green); /* Zielony kolor linii */
+            margin-top: 0.489cqi; 
+            transition: transform 0.3s ease; /* Płynne przejście dla animacji */
+        }
+
+        .product-title-group:hover .green-line {
+            transform: translateX(28.5cqi); /* Przesunięcie w prawo przy najechaniu */
         }
 
         .product-pre-title {
             font-weight: 200;
+            font-size: 1.853cqi;
+            line-height: 1;
+            color:#292929;
+            margin: 0 0 3.877cqi 0; 
         }
 
         .product-title {
-            font-size: 48px;
+            font-size: 5.188cqi; /* 3.125 * 1.5 */
             font-weight: bold;
-            color: #333;
-            margin: 10px 0;
+            color: var(--dark-text);
+            margin: 0; 
+            line-height: 1; /* Zmniejsza wysokość linii, redukując odstęp */
         }
 
         .product-subtitle {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 20px;
+            font-size: 3.153cqi; 
+            color: var(--dark-text);
+            margin-bottom: 0.01cqi; 
+            margin-top: 0; /* Upewnia się, że nie ma górnego marginesu */
+            line-height: 1; /* Zmniejsza wysokość linii */
         }
 
         .product-description {
-            font-size: 14px;
-            color: #181818;
-            line-height: 1.4;
+            font-size: 1.367cqi; /* 0.911 * 1.5 */
+            color: var(--dark-text);
+            line-height: 1.4; /* Unitless line-height scales with font-size */
         }
 
         .product-image {
             flex: 3; /* (60% of available space) */
+            overflow: hidden; /* Aby przyciąć powiększony obrazek */
         }
 
         .product-image img {
@@ -96,6 +121,11 @@
             height: 100%; /* Obrazek wypełni wysokość swojego kontenera .product-image */
             object-fit: cover; /* Zachowuje proporcje obrazka, wypełniając kontener (może przyciąć) */
             border-radius: 0; /* Usunięcie zaokrąglenia rogów */
+            transition: transform 0.3s ease; /* Płynne przejście dla animacji */
+        }
+
+        .product-image:hover img {
+            transform: scale(1.05); /* Lekkie powiększenie obrazka przy najechaniu */
         }
 
         /* Sekcja 2 - Cechy produktu */
@@ -106,8 +136,8 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(6, 1fr); /* Zapewnia 6 równych kolumn */
+            gap: 15px; /* Zmniejszony odstęp o 50% */
             max-width: 900px;
             margin: 0 auto;
         }
@@ -115,24 +145,28 @@
         .feature-item {
             text-align: center;
             padding: 20px 10px;
+            container-type: inline-size; /* Uczynienie elementu kontenerem zapytania */
         }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            background-color: #e0e0e0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+            width: 80cqi; /* Skalowana średnica okręgu (ok. 80px przy max szerokości kontenera) */
+            height: 80cqi; /* Skalowana średnica okręgu */
+            margin: 0 auto 15px; 
+            border-radius: 50%; /* Tworzy okrąg */
+            overflow: hidden; /* Aby obrazek nie wychodził poza okrąg */
+            /* Usunięto background-color, display:flex, align-items, justify-content, font-size */
+        }   
+
+        .feature-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Aby obrazek wypełnił okrąg zachowując proporcje */
         }
 
         .feature-title {
             font-size: 12px;
             font-weight: bold;
-            color: #333;
+            color: var(--dark-text);
             margin-bottom: 5px;
         }
 
@@ -210,7 +244,7 @@
         <section class="section product-header">
             <div class="product-info">
                 <div class="brand-logo">
-                    <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/lumiled_logo_kolor_trademark_2.webp" alt="Lumiled Logo" style="height: 40px;"> <!-- Zmniejszyłem nieco logo dla lepszego dopasowania -->
+                    <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/lumiled_logo_kolor_trademark_2.webp" alt="Lumiled Logo">
                 </div>
                 <div class="product-title-group">
                     <div class="product-pre-title">GIRLANDA SOLARNA</div>
@@ -219,7 +253,7 @@
                     <div class="green-line"></div>
                 </div>
                 <div class="product-description">
-                    <span style="font-weight: bold;">20 metrów + pilot sterujący</span><br>
+                    <span style="font-size: 2.20cqi; margin-bottom: 0.4cqi; display: block;">20 metrów + pilot sterujący</span>
                     Girlanda SOLLIS marki Lumiled - połączenie estetyki<br>
                     z nowoczesną technologią.
                 </div>
@@ -234,31 +268,45 @@
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <span>💡</span> <!-- Przykładowa ikona -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_1.webp" alt="Energooszczędność LED">
                     </div>
                     <div class="feature-title">Energooszczędność LED</div>
                     <div class="feature-description">Nowoczesne diody LED zapewniają jasne światło przy minimalnym zużyciu energii.</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <span>☀️</span> <!-- Przykładowa ikona -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_2.webp" alt="Zasilanie Słoneczne">
                     </div>
                     <div class="feature-title">Zasilanie Słoneczne</div>
                     <div class="feature-description">Wbudowany panel solarny ładuje girlandę w ciągu dnia, eliminując potrzebę zewnętrznego zasilania.</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <span>🎮</span> <!-- Przykładowa ikona -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_3.webp" alt="Pilot Zdalnego Sterowania">
                     </div>
                     <div class="feature-title">Pilot Zdalnego Sterowania</div>
                     <div class="feature-description">Wygodne sterowanie trybami świecenia i jasnością za pomocą dołączonego pilota.</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <span>💧</span> <!-- Przykładowa ikona -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_4.webp" alt="Odporność na Warunki Atmosferyczne">
                     </div>
                     <div class="feature-title">Odporność na Warunki Atmosferyczne</div>
                     <div class="feature-description">Konstrukcja odporna na deszcz i kurz, idealna do użytku na zewnątrz przez cały rok.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_5.webp" alt="Łatwa Instalacja">
+                    </div>
+                    <div class="feature-title">Łatwa Instalacja</div>
+                    <div class="feature-description">Prosty montaż bez potrzeby specjalistycznych narzędzi. Wystarczy rozwinąć i cieszyć się światłem.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_6.webp" alt="Wiele Trybów Świecenia">
+                    </div>
+                    <div class="feature-title">Wiele Trybów Świecenia</div>
+                    <div class="feature-description">Dostosuj atmosferę dzięki różnym trybom świecenia, od stałego światła po migotanie.</div>
                 </div>
             </div>
         </section>
