@@ -14,10 +14,6 @@
             --dark-text: #292929;
         }
 
-        .feature-item:hover {
-            transform: scale(1.15);
-            transition: 0.66s ease-in;
-            }
             .carousel::-webkit-scrollbar {
             display: none;
             }
@@ -131,21 +127,20 @@
         /* Sekcja 2 - Cechy produktu */
         .features-section {
             background-color: white;
-            padding: 40px 20px;
+            padding: 40px 0; /* Usunięto padding boczny */
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr); /* Zapewnia 6 równych kolumn */
-            gap: 15px; /* Zmniejszony odstęp o 50% */
-            max-width: 900px;
-            margin: 0 auto;
+            gap: 15px; /* Zmniejszony odstęp o 50% */ 
         }
 
         .feature-item {
             text-align: center;
             padding: 20px 10px;
             container-type: inline-size; /* Uczynienie elementu kontenerem zapytania */
+            cursor: pointer; /* Zmiana kursora na wskaźnik */
         }
 
         .feature-icon {
@@ -153,25 +148,31 @@
             height: 80cqi; /* Skalowana średnica okręgu */
             margin: 0 auto 15px; 
             border-radius: 50%; /* Tworzy okrąg */
-            overflow: hidden; /* Aby obrazek nie wychodził poza okrąg */
+            /* overflow: hidden; Usunięto, aby całe kółko mogło się skalować */
             /* Usunięto background-color, display:flex, align-items, justify-content, font-size */
+            transition: transform 0.5s ease; /* Płynna animacja powiększania dla całego kółka */
         }   
 
         .feature-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover; /* Aby obrazek wypełnił okrąg zachowując proporcje */
+            /* Przeniesiono transition do .feature-icon */
         }
 
-        .feature-title {
+        .feature-item:hover .feature-icon {
+            transform: scale(1.15); /* Powiększenie całego kółka przy najechaniu na feature-item */
+        }
+
+        /* .feature-title {
             font-size: 12px;
             font-weight: bold;
             color: var(--dark-text);
             margin-bottom: 5px;
-        }
+        } */
 
         .feature-description {
-            font-size: 10px;
+            font-size: 10cqi;
             color: #666;
             line-height: 1.3;
         }
@@ -270,43 +271,37 @@
                     <div class="feature-icon">
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_1.webp" alt="Energooszczędność LED">
                     </div>
-                    <div class="feature-title">Energooszczędność LED</div>
-                    <div class="feature-description">Nowoczesne diody LED zapewniają jasne światło przy minimalnym zużyciu energii.</div>
+                    <div class="feature-description">Biała ciepła barwa światła 2700k</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_2.webp" alt="Zasilanie Słoneczne">
                     </div>
-                    <div class="feature-title">Zasilanie Słoneczne</div>
-                    <div class="feature-description">Wbudowany panel solarny ładuje girlandę w ciągu dnia, eliminując potrzebę zewnętrznego zasilania.</div>
+                    <div class="feature-description">Przystosowana do niekorzystnych warunków</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_3.webp" alt="Pilot Zdalnego Sterowania">
                     </div>
-                    <div class="feature-title">Pilot Zdalnego Sterowania</div>
-                    <div class="feature-description">Wygodne sterowanie trybami świecenia i jasnością za pomocą dołączonego pilota.</div>
+                    <div class="feature-description">Pojemna bateria 2400mAh z czasem ładowania 8h</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_4.webp" alt="Odporność na Warunki Atmosferyczne">
                     </div>
-                    <div class="feature-title">Odporność na Warunki Atmosferyczne</div>
-                    <div class="feature-description">Konstrukcja odporna na deszcz i kurz, idealna do użytku na zewnątrz przez cały rok.</div>
+                    <div class="feature-description">Czas świecenia po naładowaniu solara</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_5.webp" alt="Łatwa Instalacja">
                     </div>
-                    <div class="feature-title">Łatwa Instalacja</div>
-                    <div class="feature-description">Prosty montaż bez potrzeby specjalistycznych narzędzi. Wystarczy rozwinąć i cieszyć się światłem.</div>
+                    <div class="feature-description">Wysokiej jakości panel solarny o mocy 3W 5V</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_6.webp" alt="Wiele Trybów Świecenia">
                     </div>
-                    <div class="feature-title">Wiele Trybów Świecenia</div>
-                    <div class="feature-description">Dostosuj atmosferę dzięki różnym trybom świecenia, od stałego światła po migotanie.</div>
+                    <div class="feature-description">Wbudowany czujnik zmierzchu</div>
                 </div>
             </div>
         </section>
