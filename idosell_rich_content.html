@@ -151,7 +151,7 @@
             border-radius: 50%;
             transition: transform 0.5s ease;
         }
-
+        
         .feature-icon img {
             width: 100%;
             height: 100%;
@@ -291,7 +291,7 @@
             gap: 0;
             container-type: inline-size;
         }
-
+        
         .benefit-box {
             position: relative;
             padding: 2.6cqi;
@@ -306,7 +306,7 @@
             overflow: hidden;
             cursor: pointer; /* Kursor pointer przy najechaniu */
         }
-
+        
         .benefit-box::before {
             content: '';
             position: absolute;
@@ -492,7 +492,7 @@
 
         /* Sekcja 7 - Panel Solarny i Funkcje */
         .panel-functions-section {
-            background-color: #f5f5f5;
+            background-color: white; /* Zmiana tła na białe */
             padding: 4.906cqi;
             display: flex;
             flex-direction: column;
@@ -505,7 +505,7 @@
             text-align: left; /* Wyrównanie tekstu w nagłówku do lewej */
             width: 48%; /* Lekko zwiększona szerokość nagłówka */
         }
-
+        
         .panel-functions-header .schematic-green-line {
             margin-left: 0; /* Linia wyrównana do lewej */
             transition: transform 0.3s ease; /* Dodana animacja jak w sekcji 6 */
@@ -550,6 +550,7 @@
             text-align: left; /* Wyrównanie tekstu do lewej */
         }
 
+        /* Sekcja 8 - Pilot Sterujący */
         .pilot-image-container {
             width: 66.5%; /* Zmniejszenie szerokości o 30% i dodatkowe 5% (było 70%) */
             margin-left: auto; /* Centrowanie kontenera */
@@ -559,74 +560,267 @@
             z-index: 5;
         }
 
-.hotspot {
-    position: absolute;
-    width: var(--hotspot-size);
-    height: var(--hotspot-size);
-    background-color: var(--brand-green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    transition: transform 0.1s ease-in-out; /* Zmieniony czas i funkcja przejścia dla płynniejszego efektu */
-    border: none; /* Usunięcie domyślnego obramowania przycisku */
-    padding: 0; /* Usunięcie domyślnego paddingu przycisku */
-    overflow: visible; /* Pozwala tooltipowi wyjść poza hotspot */
-}
+        .hotspot {
+            position: absolute;
+            width: var(--hotspot-size);
+            height: var(--hotspot-size);
+            background-color: var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.1s ease-in-out; /* Zmieniony czas i funkcja przejścia dla płynniejszego efektu */
+            border: none; /* Usunięcie domyślnego obramowania przycisku */
+            padding: 0; /* Usunięcie domyślnego paddingu przycisku */
+            overflow: visible; /* Pozwala tooltipowi wyjść poza hotspot */
+        }
 
-.hotspot:hover {
-    transform: scale(1.05);
-}
+        .hotspot:hover {
+            transform: scale(1.05);
+        }
 
-.hotspot-plus {
-    color: white;
-    font-size: calc(var(--hotspot-size) * 1.05); /* Jeszcze bardziej zwiększony mnożnik dla większego plusa */
-    font-weight: bold;
-    line-height: 1;
-    user-select: none;
-}
+        .hotspot-plus {
+            color: white;
+            font-size: calc(var(--hotspot-size) * 1.05); /* Jeszcze bardziej zwiększony mnożnik dla większego plusa */
+            font-weight: bold;
+            line-height: 1;
+            user-select: none;
+        }
 
-.tooltip {
-    position: absolute;
-    left: -5px; /* Lewa krawędź tooltipa 5px na lewo od lewej krawędzi hotspotu */
-    top: 50%;
-    transform: translateY(-50%);
-    height: calc(var(--hotspot-size) * 1.2); /* Tooltip o 20% wyższy niż hotspot */
-    background-color: rgba(255, 255, 255, 0.87); /* Ustawiona przezroczystość na 0.87 */
-    color: var(--dark-text);
-    font-family: "Roboto", sans-serif;
-    font-size: calc(var(--hotspot-size) * 0.45);
-    padding: 0.4cqi var(--tooltip-padding-x); /* Dodatkowo zwiększony padding pionowy i użycie zwiększonego poziomego */
-    border-radius: calc(var(--hotspot-size) * 1.2 / 2); /* Kształt pigułki dostosowany do nowej wysokości */
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    white-space: nowrap; /* Zapobiega zawijaniu krótkiego tekstu */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 20; /* Nad innymi elementami */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Subtelny cień */
-}
-.tooltip.position-left {
-    left: auto; /* Usuwa domyślne pozycjonowanie z lewej */
-    right: -5px; /* Prawa krawędź tooltipa 5px na prawo od prawej krawędzi hotspotu */
-    /* Ensure vertical alignment is maintained */
-    top: 50%;
-    transform: translateY(-50%);
-}
+        .tooltip {
+            position: absolute;
+            left: -5px; /* Lewa krawędź tooltipa 5px na lewo od lewej krawędzi hotspotu */
+            top: 50%;
+            transform: translateY(-50%);
+            height: calc(var(--hotspot-size) * 1.2); /* Tooltip o 20% wyższy niż hotspot */
+            background-color: rgba(255, 255, 255, 0.87); /* Ustawiona przezroczystość na 0.87 */
+            color: var(--dark-text);
+            font-family: "Roboto", sans-serif;
+            font-size: calc(var(--hotspot-size) * 0.45);
+            padding: 0.4cqi var(--tooltip-padding-x); /* Dodatkowo zwiększony padding pionowy i użycie zwiększonego poziomego */
+            border-radius: calc(var(--hotspot-size) * 1.2 / 2); /* Kształt pigułki dostosowany do nowej wysokości */
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            white-space: nowrap; /* Zapobiega zawijaniu krótkiego tekstu */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 20; /* Nad innymi elementami */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Subtelny cień */
+        }
+        
+        /* Custom background for pilot section */
+        .pilot-section-custom-bg {
+            background-color: white;
+        }
 
+        .tooltip.position-left {
+            left: auto; /* Usuwa domyślne pozycjonowanie z lewej */
+            right: -5px; /* Prawa krawędź tooltipa 5px na prawo od prawej krawędzi hotspotu */
+            /* Ensure vertical alignment is maintained */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .hotspot.active .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
 
-.hotspot.active .tooltip {
-    opacity: 1;
-    visibility: visible;
-}
+        .hotspot.active {
+            z-index: 15; /* Wyższy z-index dla aktywnego hotspotu, aby był nad innymi nieaktywnymi */
+        }
+        
+        /* Sekcja 9 - Podłączenie do sieci */
+        .adapter-section {
+            background-color: white; /* Tło sekcji na białe */
+            padding: 4.906cqi;
+            display: flex;
+            align-items: center;
+            gap: 0; /* Usunięty gap */
+            container-type: inline-size;
+        }
 
-.hotspot.active {
-    z-index: 15; /* Wyższy z-index dla aktywnego hotspotu, aby był nad innymi nieaktywnymi */
-}
+        .adapter-image-container {
+            flex: 0 0 33%; /* Obrazek zajmuje 33% szerokości */
+            aspect-ratio: 1 / 1; /* Zachowanie proporcji kwadratu */
+            overflow: hidden; /* Ukrycie powiększonej zawartości obrazka poza kontener */
+        }
+
+        .adapter-image-container img {
+            width: 100%;
+            height: 100%; /* Wypełnienie wysokości kontenera */
+            object-fit: cover; /* Zachowanie proporcji obrazka, przycięcie jeśli trzeba */
+            transition: transform 0.3s ease; /* Dodanie przejścia dla animacji hover */
+        }
+
+        .adapter-image-container:hover img {
+            transform: scale(1.05); /* Efekt powiększenia przy najechaniu */
+        }
+
+        .adapter-content-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: rgb(249, 250, 251); /* Tło dla kontenera treści */
+            padding: 2cqi 2cqi 2cqi 3.906cqi; 
+        }
+
+        /* Animacja dla paska w sekcji 9 */
+        .adapter-content-container:hover .schematic-green-line {
+            transform: translateX(25cqi); /* Przesunięcie w prawo, można dostosować wartość */
+        }
+        
+        .adapter-warning {
+            font-size: 2.25cqi; /* Zmniejszona o 25% (3 * 0.75) */
+            color: #555;
+            line-height: 1.5;
+            margin: 0.5cqi 0 3cqi 0; /* Zmniejszony górny margines */
+            font-weight: 300;
+        }
+        
+        .adapter-cta-button {
+            display: block; /* Zmiana na block, aby zajął całą szerokość */
+            width: 100%;    /* Przycisk na całą szerokość rodzica */
+            background-color: var(--brand-green);
+            color: white;
+            padding: 2.0cqi 2.2cqi; /* Dodatkowo zwiększony padding pionowy */
+            font-size: 2.35cqi;   /* Dodatkowo powiększona czcionka */
+            font-weight: bold;
+            text-align: center; /* Wyśrodkowanie tekstu w przycisku */
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .adapter-cta-button:hover {
+            background-color: #158866; /* Ciemniejszy odcień zieleni */
+        }
+        
+        /* Sekcja 10 - Galeria Inspiracji */
+        .inspiration-gallery-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        
+        .inspiration-gallery-wrapper::before,
+        .inspiration-gallery-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10%; /* Szerokość gradientu */
+            z-index: 2;
+            pointer-events: none; /* Umożliwia klikanie przez gradient */
+        }
+        
+        .inspiration-gallery-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        
+        .inspiration-gallery-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .gallery-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            gap: 0; /* Usunięty odstęp między slajdami */
+            padding: 0 1.5cqi; /* Padding, aby skrajne slajdy nie były ucięte */
+        }
+
+        .gallery-scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, and Opera */
+        }
+
+        .gallery-slide {
+            flex: 0 0 32%; /* Każdy slajd zajmuje ok. 1/3 szerokości */
+            scroll-snap-align: center;
+            aspect-ratio: 4 / 3;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-arrow {
+            position: absolute;
+            top: calc(50% - 1.5cqi); /* Dostosowanie do centrowania względem obrazów, uwzględniając wysokość nawigacji kropkowej */
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 1); /* Zwiększone krycie tła dla lepszej widoczności */
+            border: none;
+            border-radius: 50%;
+            width: 4.5cqi; /* Lekko powiększony przycisk */
+            height: 4.5cqi; /* Lekko powiększony przycisk */
+            cursor: pointer;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2cqi;
+            color: var(--dark-text);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .gallery-arrow:hover {
+            background-color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-arrow.prev { left: 3%; }
+        .gallery-arrow.next { right: 3%; }
+        .gallery-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .gallery-dots-nav {
+            text-align: center;
+            margin-top: 2cqi;
+        }
+
+        .gallery-dots-nav .dot {
+            display: inline-block;
+            width: 1cqi;
+            height: 1cqi;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 0.5cqi;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .gallery-dots-nav .dot.active {
+            background-color: var(--dark-text);
+        }
+        
+        /* Sekcja 11 - Wideo YouTube */
+        .youtube-video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+            margin-top: 2cqi; /* Odstęp od nagłówka */
+        }
+
+        .youtube-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 2.5cqi; /* Bardziej zaokrąglone rogi */
+        }
 
         /* Responsywność */
         @media (max-width: 768px) {
@@ -635,10 +829,14 @@
                 margin: 0 2.5%;
             }
 
-            .product-header, .discovery-section, .schematic-section {
+            .product-header, .discovery-section, .schematic-section, .adapter-section {
                 flex-direction: column;
                 text-align: center;
                 padding: 30px 15px;
+            }
+            
+            .adapter-content-container {
+                align-items: center; /* Wyśrodkowanie zawartości na mobilnych */
             }
 
             .product-title { font-size: 36px; }
@@ -660,7 +858,7 @@
             .pilot-image-container {
                 margin-top: 0; /* Usunięcie nachodzenia na mobilnych, odstęp kontrolowany przez 'gap' rodzica */
             }
-
+            .gallery-slide { flex-basis: 48%; } /* Dwa slajdy widoczne na tabletach */
         }
 
         @media (max-width: 480px) {
@@ -671,6 +869,7 @@
             .benefit-title { font-size: 6cqi; }
             .benefit-description { font-size: 3cqi; }
             .panel-functions-grid { grid-template-columns: 1fr; } /* 1 kolumna na telefonach */
+            .gallery-slide { flex-basis: 90%; } /* Prawie jeden slajd widoczny na telefonach */
         }
     </style>
 </head>
@@ -740,12 +939,12 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- Sekcja 3: Call to action -->
         <section class="section cta-section">
             <h2 class="cta-main-title">Poznaj możliwości girlandy SOLLIS</h2>
         </section>
-
+        
         <!-- Sekcja 4: Odkryj możliwości zestawu -->
         <section class="section discovery-section">
             <div class="discovery-content">
@@ -765,7 +964,7 @@
                 <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_3.webp" alt="Elementy zestawu girlandy SOLLIS">
             </div>
         </section>
-
+        
         <!-- Sekcja 5: Benefits -->
         <section class="section benefits-section">
             <div class="benefits-grid">
@@ -811,7 +1010,7 @@
                 <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_7.webp" alt="Schemat Girlandy Sollis">
             </div>
         </section>
-
+        
         <!-- Sekcja 7: Panel Solarny i Funkcje -->
         <section class="section panel-functions-section">
             <div class="panel-functions-header">
@@ -848,7 +1047,7 @@
         </section>
 
         <!-- Sekcja 8: Pilot Sterujący -->
-        <section class="section panel-functions-section">
+        <section class="section panel-functions-section pilot-section-custom-bg">
             <div class="panel-functions-header">
                 <h2 class="schematic-title">Praktyczny pilot sterujący <wbr> o zasięgu 15m</h2>
                 <div class="schematic-green-line"></div>
@@ -874,7 +1073,7 @@
                     <span class="hotspot-plus">+</span>
                     <div class="tooltip">Ustaw limit czasowy na 4H/6H/8H</div>
                 </button>
-
+                
                 <!-- Hotspot 4: 8H Timer -->
                 <button class="hotspot" style="top: 9%; left: 52%;" aria-label="Timer 8 godzin">
                     <span class="hotspot-plus">+</span>
@@ -895,6 +1094,59 @@
             </div>
         </section>
 
+        <!-- Sekcja 9: Podłączenie do sieci 230V -->
+        <section class="section adapter-section">
+            <div class="adapter-image-container">
+                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda-22.webp" alt="Adapter do podłączenia girlandy do sieci 230V">
+            </div>
+            <div class="adapter-content-container">
+                <h2 class="schematic-title">Możliwość podłączenia<br>do sieci 230V</h2>
+                <div class="schematic-green-line"></div>
+                <p class="adapter-warning">
+                    UWAGA! Adapter jest do nabycia na osobnej aukcji, nie jest częścią zestawu girlandy.
+                </p>
+                <a href="#" class="adapter-cta-button">
+                    KUP ZESTAW: GIRLANDA SOLLIS + ADAPTER ►
+                </a>
+            </div>
+        </section>
+
+        <!-- Sekcja 10: Galeria Inspiracji -->
+        <section class="section panel-functions-section new-empty-section-10">
+            <div class="panel-functions-header">
+                <h2 class="schematic-title">Zainspiruj się</h2>
+                <div class="schematic-green-line"></div>
+            </div>
+            <div id="inspiration-gallery" class="inspiration-gallery-wrapper">
+                <div class="gallery-scroll-container">
+                    <!-- Slajdy zostaną dodane tutaj. Podmień na prawdziwe obrazki -->
+                    <div class="gallery-slide"><img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/girlanda_DLOGR_LEDDO__14.webp?v=1750065612470" alt="Inspiracja 1"></div>
+                    <div class="gallery-slide"><img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/Depositphotos_379967204_XL_1.webp?v=1750065612470" alt="Inspiracja 2"></div>
+                    <div class="gallery-slide"><img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/Depositphotos_378495904_XL_1.webp?v=1750065612470" alt="Inspiracja 3"></div>
+                    <div class="gallery-slide"><img src="https://picsum.photos/800/600?random=4" alt="Inspiracja 4"></div>
+                    <!-- Można łatwo dodać więcej slajdów -->
+                </div>
+                <button class="gallery-arrow prev" aria-label="Poprzedni slajd">&lt;</button>
+                <button class="gallery-arrow next" aria-label="Następny slajd">&gt;</button>
+                <div class="gallery-dots-nav"></div>
+            </div>
+        </section>
+
+        <!-- Sekcja 11: Wideo YouTube -->
+        <section class="section panel-functions-section new-youtube-section">
+            <div class="panel-functions-header">
+                <h2 class="schematic-title">Poznaj girlandy solarne Lumiled</h2>
+                <div class="schematic-green-line"></div>
+            </div>
+            <div class="youtube-video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/5I8LY47C60U" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+        </section>
 
     </div>
 
@@ -930,60 +1182,100 @@
 
                 hotspots.forEach(hotspot => {
                     hotspot.setAttribute('aria-expanded', 'false'); // Dostępność
-                    // Logika pozycjonowania tooltipu zostanie przeniesiona do event listenera kliknięcia
-
                     hotspot.addEventListener('click', function(event) {
-                        event.stopPropagation(); // Zapobiega propagacji kliknięcia
+                        event.stopPropagation();
                         const isCurrentlyActive = this.classList.contains('active');
-
-                        // Zamknij wszystkie inne aktywne tooltips
                         hotspots.forEach(hs => {
-                            if (hs !== this) {
-                                hs.classList.remove('active');
-                                hs.setAttribute('aria-expanded', 'false');
-                            }
+                            if (hs !== this) hs.classList.remove('active');
                         });
-
-                        // Przełącz stan bieżącego hotspotu
-                        if (isCurrentlyActive) {
-                            this.classList.remove('active');
-                            this.setAttribute('aria-expanded', 'false');
-                        } else {
-                            // Dynamiczne pozycjonowanie tooltipu przy każdym kliknięciu
-                            const tooltip = this.querySelector('.tooltip');
-                            if (tooltip) {
-                                const hotspotStyleLeft = this.style.left;
-                                const hotspotLeftPercentage = parseFloat(hotspotStyleLeft);
-
-                                tooltip.classList.remove('position-left'); // Usuń poprzednią klasę pozycji
-
-                                if (!isNaN(hotspotLeftPercentage)) {
-                                    // Check if the hotspot's left edge is in the right half of the container
-                                    if (hotspotLeftPercentage >= 50) {
-                                         console.log(`   -> Hotspot left >= 50% (${hotspotLeftPercentage}%), adding .position-left`);
-                                         tooltip.classList.add('position-left');
-                                    } else {
-                                         console.log(`   -> Hotspot left < 50% (${hotspotLeftPercentage}%), ensuring .position-left is removed`);
-                                    }
-                                }
-                                // Jeśli warunek nie jest spełniony, tooltip domyślnie pojawi się po prawej
-                            }
-
-                            this.classList.add('active');
-                            this.setAttribute('aria-expanded', 'true');
-                        }
+                        this.classList.toggle('active');
+                        this.setAttribute('aria-expanded', this.classList.contains('active'));
                     });
                 });
 
-                // Zamykanie tooltipów po kliknięciu poza nimi
                 document.addEventListener('click', function(event) {
                     if (!event.target.closest('.hotspot')) {
-                        hotspots.forEach(hotspot => {
-                            hotspot.classList.remove('active');
-                            hotspot.setAttribute('aria-expanded', 'false');
-                        });
+                        hotspots.forEach(hotspot => hotspot.classList.remove('active'));
                     }
                 });
+            }
+
+            // Kod dla galerii inspiracji
+            const gallery = document.getElementById('inspiration-gallery');
+            if (gallery) {
+                const container = gallery.querySelector('.gallery-scroll-container');
+                const slides = gallery.querySelectorAll('.gallery-slide');
+                const prevButton = gallery.querySelector('.gallery-arrow.prev');
+                const nextButton = gallery.querySelector('.gallery-arrow.next');
+                const dotsNav = gallery.querySelector('.gallery-dots-nav');
+
+                if (slides.length > 0) {
+                    // Generuj kropki
+                    slides.forEach((_, index) => {
+                        const dot = document.createElement('button');
+                        dot.classList.add('dot');
+                        dot.dataset.index = index;
+                        dot.setAttribute('aria-label', `Idź do slajdu ${index + 1}`);
+                        dotsNav.appendChild(dot);
+                    });
+
+                    const dots = dotsNav.querySelectorAll('.dot');
+
+                    const updateGalleryState = () => {
+                        const scrollLeft = container.scrollLeft;
+                        const scrollWidth = container.scrollWidth;
+                        const clientWidth = container.clientWidth;
+                        
+                        // Aktualizacja przycisków
+                        prevButton.disabled = scrollLeft < 1;
+                        nextButton.disabled = scrollLeft + clientWidth >= scrollWidth - 1;
+
+                        // Aktualizacja kropek
+                        const slideWidth = slides[0].offsetWidth;
+                        // const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0
+                        const currentIndex = Math.round(scrollLeft / slideWidth);
+                        
+                        dots.forEach((dot, index) => {
+                            dot.classList.toggle('active', index === currentIndex);
+                        });
+                    };
+
+                    prevButton.addEventListener('click', () => { // Kliknięcie strzałki "wstecz"
+                        const slideWidth = slides[0].offsetWidth;
+                        // const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0
+                        container.scrollLeft -= slideWidth;
+                    });
+
+                    nextButton.addEventListener('click', () => { // Kliknięcie strzałki "dalej"
+                        const slideWidth = slides[0].offsetWidth;
+                        // const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0
+                        container.scrollLeft += slideWidth;
+                    });
+
+                    dots.forEach(dot => {
+                        dot.addEventListener('click', () => { // Kliknięcie kropki nawigacyjnej
+                            const index = parseInt(dot.dataset.index);
+                            const slideWidth = slides[0].offsetWidth;
+                            const gap = parseFloat(getComputedStyle(container).gap);
+                            container.scrollLeft = index * (slideWidth + gap);
+                        });
+                    });
+                    
+                    // Używamy IntersectionObserver dla lepszej wydajności aktualizacji kropek
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                             if(entry.isIntersecting) {
+                                 updateGalleryState();
+                             }
+                        });
+                    }, { root: container, threshold: 0.1 });
+                    
+                    observer.observe(gallery);
+                    
+                    container.addEventListener('scroll', updateGalleryState);
+                    window.addEventListener('resize', updateGalleryState);
+                    updateGalleryState(); // Inicjalny stan
+                }
             }
         });
     </script>
