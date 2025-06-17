@@ -873,13 +873,22 @@
             .product-title { font-size: 36px; }
             .features-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .discovery-content { width: 100%; z-index: 2; }
-            .discovery-image { position: relative; width: 100%; margin-top: 1.953cqi; }
             /* Ustawienie rozmiaru czcionki dla H2 na mobilnych */
-            .cta-main-title,
+            .cta-main-title { 
+                font-size: 22px; /* Zmniejszenie dla sekcji 3 */
+            }
             .discovery-title,
             .schematic-title { 
                 font-size: 28px; 
             }
+            .schematic-subtitle {
+                font-size: 18px; /* Ustawienie rozmiaru dla podtytułów schematów na mobilnych */
+            }
+            .schematic-description {
+                font-size: 15px; /* Ustawienie rozmiaru dla opisów schematów na mobilnych */
+                text-align: left;
+            }
+            .discovery-image { position: relative; width: 100%; margin-top: 1.953cqi; }
             .discovery-list { text-align: left; max-width: 39.063cqi; margin: 0 auto; }
             .benefits-grid { grid-template-columns: 1fr; }
             .benefit-title { font-size: 4cqi; }
@@ -887,7 +896,15 @@
             .panel-functions-section { align-items: center; } /* Na mobilnych przywracamy centrowanie dla całej sekcji */
             .panel-functions-header { width: 100%; text-align: center; } /* Nagłówek na całą szerokość i wyśrodkowany tekst */
             .panel-functions-header .schematic-green-line { margin-left: auto; margin-right: auto; } /* Linia wyśrodkowana na mobilnych */
-            .schematic-text-content-area { flex-direction: column; gap: 1.5cqi; }
+            .schematic-text-content-area { 
+                flex-direction: column; 
+                gap: 1.5cqi; 
+                align-items: center; /* Wyśrodkowanie .schematic-content i .schematic-description-area */
+            }
+            .panel-function-description {
+                font-size: 15px; /* Ustawienie rozmiaru dla opisów funkcji panelu na mobilnych */
+                align-items: center; /* Wyśrodkowanie .schematic-content i .schematic-description-area */
+            }
             .schematic-description-area, .schematic-content { text-align: center; } /* Wyśrodkowanie tekstu w kolumnach na mobilnych */
             .schematic-section .schematic-green-line { margin-left: auto; margin-right: auto; } /* Wyśrodkowanie linii na mobilnych */
             .panel-functions-grid { grid-template-columns: repeat(2, 1fr); } /* 2 kolumny na tabletach */
@@ -910,13 +927,35 @@
                 font-size: 11px; /* Powiększone o 50% (było 7px) */
             }
             .discovery-title { font-size: 28px !important; } /* Zastępuje 2.344cqi */
-            .discovery-subtitle { font-size: 10px; } /* (1.367 / 3.906) * 28px */
+            .discovery-subtitle { 
+                margin-top: 10px;
+                font-size: 15px;
+                text-align: left;
+            } /* Powiększone o 50% (było 10px) */
             .discovery-green-line { /* Wyśrodkowanie linii w sekcji 4 na mobilnych */
                 margin: 1.464cqi auto 2.442cqi auto;
             }
-            .discovery-list { font-size: 10px; } /* (1.367 / 3.906) * 28px, zastępuje 1.367cqi */
-            
-            /* Pozostałe style bez zmian... */
+            .discovery-list { 
+                font-size: 15px; /* Powiększone o 50% (było 10px) */
+                max-width: 100%; /* Lista na całą szerokość .discovery-content */
+                margin-left: 0;  /* Usunięcie automatycznego marginesu */
+                margin-right: 0; /* Usunięcie automatycznego marginesu */
+            }
+
+            /* Sekcja 10 - Galeria Inspiracji - Mobile (telefony) */
+            .gallery-slide {
+                flex-basis: 100%; /* Jeden obrazek na raz */
+                /* aspect-ratio: 4 / 3; /* Zachowanie proporcji, już ustawione globalnie */
+            }
+
+            .gallery-arrow {
+                width: 36px;  /* Powiększone przyciski */
+                height: 36px;
+                font-size: 20px; /* Większa ikona strzałki */
+                top: 50%; /* Uproszczone centrowanie pionowe na mobilnych */
+            }
+            .gallery-arrow.prev { left: 10px; } /* Dostosowane pozycjonowanie od krawędzi */
+            .gallery-arrow.next { right: 10px; }
         }
     </style>
 </head>
@@ -1323,6 +1362,30 @@
                     container.addEventListener('scroll', updateGalleryState);
                     window.addEventListener('resize', updateGalleryState);
                     updateGalleryState(); // Inicjalny stan
+                }
+
+                // Dodanie obsługi gestów przewijania dla galerii
+                if (container && slides.length > 0) {
+                    let touchstartX = 0;
+                    let touchendX = 0;
+                    const swipeThreshold = 50; // Minimalna odległość w pikselach do uznania za swipe
+
+                    container.addEventListener('touchstart', function(event) {
+                        touchstartX = event.changedTouches[0].screenX;
+                    }, { passive: true }); // Użycie passive: true dla lepszej wydajności przewijania
+
+                    container.addEventListener('touchend', function(event) {
+                        touchendX = event.changedTouches[0].screenX;
+                        handleSwipeGesture();
+                    }, false);
+
+                    function handleSwipeGesture() {
+                        if (touchendX < touchstartX - swipeThreshold) { // Przesunięcie w lewo
+                            if (nextButton && !nextButton.disabled) nextButton.click();
+                        } else if (touchendX > touchstartX + swipeThreshold) { // Przesunięcie w prawo
+                            if (prevButton && !prevButton.disabled) prevButton.click();
+                        }
+                    }
                 }
             }
         });
