@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-green: #1AA278;
+            --brand-green: #5BBA35;
             --dark-text: #292929; 
             --hotspot-size: 4.8cqi; /* Jeszcze bardziej powiększony rozmiar hotspotu */
             --tooltip-padding-x: 2cqi; /* Dodatkowo zwiększony poziomy padding w tooltipie */
@@ -294,7 +294,7 @@
         /* Sekcja 5 - Benefits */
         .benefits-section {
             padding-top: 0;
-            padding-bottom: 40px;
+            padding-bottom: 0px; /* Zmniejszony do 0px */
         }
         
         .benefits-grid {
@@ -417,7 +417,10 @@
         /* Sekcja 6 - Schemat Girlandy */
         .schematic-section {
             background-color: white; /* Zmiana tła na białe */
-            padding: 1.2cqi 4.906cqi 2.453cqi; /* Zmniejszony padding-bottom o połowę */
+            padding-top: calc(1.2cqi + 40px); /* Zwiększony o 40px */
+            padding-right: 4.906cqi;
+            padding-bottom: 2.453cqi; 
+            padding-left: 4.906cqi;
             display: flex;
             flex-direction: column; /* Ustawienie kierunku na kolumnę */
             align-items: stretch; /* Rozciągnięcie dzieci na całą szerokość */
@@ -654,7 +657,7 @@
             background-color: white; /* Tło sekcji na białe */
             padding: 1.2cqi 4.906cqi 2.453cqi; /* Zmniejszony padding-bottom o połowę */
             display: flex;
-            align-items: center;
+            align-items: stretch; /* Pozwala elementom flex rozciągnąć się do wysokości najwyższego elementu */
             gap: 0; /* Usunięty gap */
             container-type: inline-size;
         }
@@ -714,7 +717,7 @@
         }
 
         .adapter-cta-button:hover {
-            background-color: #158866; /* Ciemniejszy odcień zieleni */
+            background-color: #4FA32E; /* Ciemniejszy odcień nowego zielonego (#5BBA35) */
         }
         
         /* Sekcja 10 - Galeria Inspiracji */
@@ -1140,7 +1143,7 @@
                 </div>
             </div>
             <div class="schematic-image-container">
-                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_7.webp" alt="Schemat Girlandy Sollis">
+                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_7.jpg" alt="Schemat Girlandy Sollis">
             </div>
         </section>
         
