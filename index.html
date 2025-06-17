@@ -858,20 +858,22 @@
                 margin: 0 auto; /* Wyśrodkowanie obrazka */
             }
             
-            .adapter-content-container {
-                align-items: center; /* Wyśrodkowanie zawartości na mobilnych */
-            }
-            
-            /* Centrowanie zielonych linii w widoku mobilnym */
+            /* Zwiększenie szerokości i centrowanie wszystkich zielonych linii w widoku mobilnym */
+            .product-title-group .green-line,
             .discovery-green-line,
-            .adapter-content-container .schematic-green-line {
+            .schematic-green-line, /* Obejmuje użycie w .schematic-content, .panel-functions-header, .adapter-content-container */
+            .benefit-green-line {
+                width: calc(3.906cqi * 3);
                 margin-left: auto;
                 margin-right: auto;
             }
-            .product-title-group .green-line { /* Zwiększenie szerokości paska w sekcji 1 na mobilnych */
-                width: calc(3.906cqi * 3);
-                margin-left: auto; /* Zachowanie centrowania */
-                margin-right: auto; /* Zachowanie centrowania */
+            /* Zapewnienie centrowania dla linii w .panel-functions-header (sekcje 7, 8, 10, 11) w mobilnej wersji */
+            .panel-functions-header .schematic-green-line {
+                margin-left: auto; /* Nadpisuje desktopowe margin-left: 0 */
+                margin-right: auto; /* Dla spójności, choć .schematic-green-line już to ma */
+            }
+            .adapter-content-container {
+                align-items: center; /* Wyśrodkowanie zawartości na mobilnych */
             }
 
             .product-pre-title {
@@ -914,7 +916,6 @@
             .benefit-description { font-size: 15px; } /* Zmiana rozmiaru dla mobilnych */
             .panel-functions-section { align-items: center; } /* Na mobilnych przywracamy centrowanie dla całej sekcji */
             .panel-functions-header { width: 100%; text-align: center; } /* Nagłówek na całą szerokość i wyśrodkowany tekst */
-            .panel-functions-header .schematic-green-line { margin-left: auto; margin-right: auto; } /* Linia wyśrodkowana na mobilnych */
             .schematic-text-content-area { 
                 flex-direction: column; 
                 gap: 1.5cqi; 
@@ -925,7 +926,6 @@
                 align-items: center; /* Wyśrodkowanie .schematic-content i .schematic-description-area */
             }
             .schematic-description-area, .schematic-content { text-align: center; } /* Wyśrodkowanie tekstu w kolumnach na mobilnych */
-            .schematic-section .schematic-green-line { margin-left: auto; margin-right: auto; } /* Wyśrodkowanie linii na mobilnych */
             .panel-functions-grid { grid-template-columns: repeat(2, 1fr); } /* 2 kolumny na tabletach */
             .pilot-image-container {
                 margin-top: 0; /* Usunięcie nachodzenia na mobilnych, odstęp kontrolowany przez 'gap' rodzica */
@@ -934,6 +934,10 @@
             }
             .adapter-warning {
                 font-size: 15px; /* Zwiększenie czcionki dla ostrzeżenia na mobilnych */
+            }
+            .adapter-cta-button {
+                padding: 15px 20px; /* Zwiększony padding dla lepszej klikalności */
+                font-size: 18px;    /* Zwiększona czcionka */
             }
             .new-youtube-section { /* Dodanie marginesu dolnego do ostatniej sekcji na mobilnych */
                 margin-bottom: 30px;
