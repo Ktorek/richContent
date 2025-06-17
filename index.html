@@ -489,6 +489,7 @@
             width: 100%; /* Obrazek zajmuje całą dostępną szerokość */
             /* usunięto stary flex: 3; */
             padding: 1.5cqi; /* Dodany padding wokół obrazka */
+            position: relative; /* Umożliwia pozycjonowanie absolutne hotspotów */
         }
 
         .schematic-image-container img {
@@ -957,15 +958,34 @@
                 --hotspot-size: 12cqi;       /* Oryginalnie 4.8cqi, powiększone dla lepszej klikalności */
                 --tooltip-padding-x: 5cqi;   /* Oryginalnie 2cqi, przeskalowane proporcjonalnie (2 * 2.5 = 5) */
             }
+            /* Mobilne style dla tooltipów - wspólne */
             .tooltip { 
-                left: 50%; /* Start na środku hotspotu */
                 top: 50%; /* Pionowo na środku hotspotu */
-                transform: translate(-50%, -50%); /* Wyśrodkowanie tooltipa względem jego własnych wymiarów */
+                transform: translateY(-50%); /* Wyśrodkowanie tooltipa w pionie względem jego własnej wysokości */
                 height: var(--hotspot-size); /* Wysokość tooltipa równa wysokości hotspotu */
                 font-size: calc(var(--hotspot-size) * 0.35); /* Zmniejszona czcionka w tooltipie */
                 border-radius: calc(var(--hotspot-size) / 2); /* Dostosowany border-radius do nowej wysokości */
                 padding-top: 0; 
                 padding-bottom: 0; 
+            }
+
+            /* --- Tooltipy w SEKCJI 6 (Schemat Girlandy) - Mobilne --- */
+            /* Mobilne (Sekcja 6): Tooltip domyślnie (bez .position-left) po PRAWEJ stronie hotspotu */
+            .schematic-image-container .tooltip:not(.position-left) {
+                left: calc(100% + 8px); /* 100% szerokości hotspotu + 8px odstępu */
+            }
+            /* Mobilne (Sekcja 6): Tooltip z .position-left po LEWEJ stronie hotspotu */
+            .schematic-image-container .tooltip.position-left {
+                right: calc(100% + 8px); /* 100% szerokości hotspotu + 8px odstępu */
+                left: auto; /* Zapobiega konfliktowi z 'left' z mniej specyficznych reguł */
+            }
+
+            /* --- Tooltipy w SEKCJI 8 (Pilot) - Mobilne --- */
+            /* Przywrócenie centrowania tooltipów dla sekcji pilota na mobilnych */
+            .pilot-image-container .tooltip {
+                left: 50%;
+                /* top: 50%; jest już w ogólnej regule .tooltip */
+                transform: translate(-50%, -50%); /* Wyśrodkowanie tooltipa względem jego własnych wymiarów */
             }
             
             .features-grid { 
@@ -1144,6 +1164,17 @@
             </div>
             <div class="schematic-image-container">
                 <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_7.jpg" alt="Schemat Girlandy Sollis">
+                <!-- Hotspot Lewy (tooltip po prawej) -->
+                <button class="hotspot" style="top: 62%; left: 3%;" aria-label="Informacja o przewodzie">
+                    <span class="hotspot-plus">+</span>
+                    <div class="tooltip">Przewód H03VV-F 2x0,5mm2</div>
+                </button>
+
+                <!-- Hotspot Prawy (tooltip po lewej) -->
+                <button class="hotspot" style="top: 43%; left: 93%;" aria-label="Informacja o panelu słonecznym">
+                    <span class="hotspot-plus">+</span>
+                    <div class="tooltip position-left">Zaawansowany panel słoneczny 5V 2400mAh</div>
+                </button>
             </div>
         </section>
         
@@ -1311,30 +1342,41 @@
                 observer.observe(imageToAnimate);
             }
 
-            // Nowy kod dla hotspotów
-            const pilotContainer = document.querySelector('.pilot-image-container');
-            if (pilotContainer) {
-                const hotspots = pilotContainer.querySelectorAll('.hotspot');
+            // Uogólniony kod dla hotspotów
+            const hotspotContainers = document.querySelectorAll('.pilot-image-container, .schematic-image-container'); 
 
-                hotspots.forEach(hotspot => {
+            hotspotContainers.forEach(container => {
+                const hotspotsInContainer = container.querySelectorAll('.hotspot');
+
+                hotspotsInContainer.forEach(hotspot => {
                     hotspot.setAttribute('aria-expanded', 'false'); // Dostępność
                     hotspot.addEventListener('click', function(event) {
                         event.stopPropagation();
                         const isCurrentlyActive = this.classList.contains('active');
-                        hotspots.forEach(hs => {
-                            if (hs !== this) hs.classList.remove('active');
+                        
+                        // Zamknij wszystkie inne hotspoty NA CAŁEJ STRONIE
+                        document.querySelectorAll('.hotspot.active').forEach(hs => {
+                            if (hs !== this) {
+                                hs.classList.remove('active');
+                                hs.setAttribute('aria-expanded', 'false');
+                            }
                         });
+                        
                         this.classList.toggle('active');
                         this.setAttribute('aria-expanded', this.classList.contains('active'));
                     });
                 });
+            });
 
-                document.addEventListener('click', function(event) {
-                    if (!event.target.closest('.hotspot')) {
-                        hotspots.forEach(hotspot => hotspot.classList.remove('active'));
-                    }
-                });
-            }
+            // Globalny listener do zamykania hotspotów po kliknięciu poza nimi
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.hotspot')) {
+                    document.querySelectorAll('.hotspot.active').forEach(hotspot => {
+                        hotspot.classList.remove('active');
+                        hotspot.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            });
             
             // Kod dla galerii inspiracji
             const gallery = document.getElementById('inspiration-gallery');
