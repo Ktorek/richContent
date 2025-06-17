@@ -870,6 +870,13 @@
                 margin-right: auto;
             }
 
+            .product-pre-title {
+                font-size: 24px; /* Zwiększenie dla wersji mobilnej */
+            }
+            .product-subtitle {
+                font-size: 15px; /* Ustawienie rozmiaru dla wersji mobilnej */
+                margin-top: 13px; /* Dodanie marginesu górnego dla wersji mobilnej */
+            }
             .product-title { font-size: 36px; }
             .features-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .discovery-content { width: 100%; z-index: 2; }
@@ -910,6 +917,11 @@
             .panel-functions-grid { grid-template-columns: repeat(2, 1fr); } /* 2 kolumny na tabletach */
             .pilot-image-container {
                 margin-top: 0; /* Usunięcie nachodzenia na mobilnych, odstęp kontrolowany przez 'gap' rodzica */
+                width: 100%;   /* Obrazek pilota na całą szerokość rodzica */
+                height: auto;  /* Wysokość dostosowana do proporcji obrazka */
+            }
+            .adapter-warning {
+                font-size: 15px; /* Zwiększenie czcionki dla ostrzeżenia na mobilnych */
             }
             .gallery-slide { flex-basis: 48%; } /* Dwa slajdy widoczne na tabletach */
         }
@@ -917,6 +929,18 @@
         @media (max-width: 480px) {
             body { /* Zapobieganie poziomemu przewijaniu na mobilnych */
                 overflow-x: hidden;
+            }
+            /* Sekcja 8 - Pilot - Powiększenie hotspotów i tooltipów na telefonach */
+            :root {
+                --hotspot-size: 12cqi;       /* Oryginalnie 4.8cqi, powiększone dla lepszej klikalności */
+                --tooltip-padding-x: 5cqi;   /* Oryginalnie 2cqi, przeskalowane proporcjonalnie (2 * 2.5 = 5) */
+            }
+            .tooltip { 
+                height: var(--hotspot-size); /* Wysokość tooltipa równa wysokości hotspotu */
+                font-size: calc(var(--hotspot-size) * 0.35); /* Zmniejszona czcionka w tooltipie */
+                border-radius: calc(var(--hotspot-size) / 2); /* Dostosowany border-radius do nowej wysokości */
+                padding-top: 0; /* Usunięcie explicit paddingu, flex wyśrodkuje */
+                padding-bottom: 0; /* Usunięcie explicit paddingu, flex wyśrodkuje */
             }
             
             .features-grid { 
