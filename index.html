@@ -971,12 +971,12 @@
 
             /* --- Tooltipy w SEKCJI 6 (Schemat Girlandy) - Mobilne --- */
             /* Mobilne (Sekcja 6): Tooltip domyślnie (bez .position-left) po PRAWEJ stronie hotspotu */
-            .schematic-image-container .tooltip:not(.position-left) {
-                left: calc(100% + 8px); /* 100% szerokości hotspotu + 8px odstępu */
-            }
+            .schematic-image-container .tooltip:not(.position-left) { /* Lewa krawędź tooltipa na równi z lewą krawędzią hotspotu */
+                left: 0px; 
+            } 
             /* Mobilne (Sekcja 6): Tooltip z .position-left po LEWEJ stronie hotspotu */
-            .schematic-image-container .tooltip.position-left {
-                right: calc(100% + 8px); /* 100% szerokości hotspotu + 8px odstępu */
+            .schematic-image-container .tooltip.position-left { /* Prawa krawędź tooltipa na równi z prawą krawędzią hotspotu */
+                right: 0px; 
                 left: auto; /* Zapobiega konfliktowi z 'left' z mniej specyficznych reguł */
             }
 
