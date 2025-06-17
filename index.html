@@ -79,11 +79,7 @@
             height: 0.293cqi;
             background-color: var(--brand-green);
             margin-top: 0.489cqi;
-            transition: transform 0.3s ease;
-        }
-
-        .product-title-group:hover .green-line {
-            transform: translateX(28.5cqi);
+            /* transition: transform 0.3s ease; Usunięto dla nowej animacji */
         }
 
         .product-pre-title {
@@ -244,11 +240,7 @@
             height: 0.293cqi;
             background-color: var(--brand-green);
             margin: 1.464cqi 0 2.442cqi 0;
-            transition: transform 0.3s ease;
-        }
-
-        .discovery-section:hover .discovery-green-line {
-            transform: translateX(15cqi);
+            /* transition: transform 0.3s ease; Usunięto dla nowej animacji */
         }
 
         .discovery-list {
@@ -461,11 +453,7 @@
             margin-top: 1.464cqi;
             margin-bottom: 2.442cqi;
             margin-left: 0; /* Zapewnienie wyrównania do lewej */
-            transition: transform 0.3s ease; /* Dodana animacja */
-        }
-
-        .schematic-content:hover .schematic-green-line { /* Animacja linii przy najechaniu na kontener tekstu */
-            transform: translateX(25cqi); /* Przesunięcie w prawo, można dostosować wartość */
+            /* transition: transform 0.3s ease; Usunięto dla nowej animacji */
         }
 
         .schematic-subtitle {
@@ -498,16 +486,6 @@
             display: block;
         }
 
-        @keyframes scaleUpAndDown {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); } /* Powiększenie o 10% w połowie animacji */
-            100% { transform: scale(1); } /* Powrót do oryginalnego rozmiaru */
-        }
-
-        .image-scale-animation {
-            animation: scaleUpAndDown 1s ease-in-out;
-        }
-
         /* Sekcja 7 - Panel Solarny i Funkcje */
         .panel-functions-section {
             background-color: white; /* Zmiana tła na białe */
@@ -527,10 +505,7 @@
         
         .panel-functions-header .schematic-green-line {
             margin-left: 0; /* Linia wyrównana do lewej */
-            transition: transform 0.3s ease; /* Dodana animacja jak w sekcji 6 */
-        }
-        .panel-functions-header:hover .schematic-green-line {
-            transform: translateX(25cqi); /* Przesunięcie w prawo, tak jak w sekcji 6, można dostosować */
+            /* transition: transform 0.3s ease; Usunięto dla nowej animacji */
         }
 
         .panel-functions-grid {
@@ -688,11 +663,6 @@
             background-color: rgb(249, 250, 251); /* Tło dla kontenera treści */
             overflow: hidden; /* FIX: Zapobiega wychodzeniu linii poza kontener */
             padding: 2cqi 2cqi 2cqi 3.906cqi; 
-        }
-        
-        /* Animacja dla paska w sekcji 9 */
-        .adapter-content-container:hover .schematic-green-line {
-            transform: translateX(25cqi); /* Przesunięcie w prawo, można dostosować wartość */
         }
         
         .adapter-warning {
@@ -1026,6 +996,17 @@
             .gallery-arrow.prev { left: 10px; } /* Dostosowane pozycjonowanie od krawędzi */
             .gallery-arrow.next { right: 10px; }
         }
+
+        /* Animacja "wjazdu" dla zielonych linii przy scrollowaniu */
+        .reveal-green-line-on-scroll {
+            opacity: 0;
+            transform: translateX(-20px); /* Początkowe przesunięcie w lewo, jak w sekcji 5 */
+            transition: opacity 0.4s ease-out 0.3s, transform 0.4s ease-out 0.3s; /* Płynne przejście z opóźnieniem 0.3s */
+        }
+        .reveal-green-line-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateX(0); /* Stan końcowy - linia na swoim miejscu */
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -1319,29 +1300,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Poprawka: Deklaracja zmiennej imageToAnimate
-            // Zakładamy, że animacja dotyczy obrazka w sekcji 6 (schemat girlandy)
-            const imageToAnimate = document.querySelector('.schematic-section .schematic-image-container img');
-
-            if (imageToAnimate) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Dodaj klasę animacji
-                            entry.target.classList.add('image-scale-animation');
-                            // Usuń klasę po zakończeniu animacji, aby mogła się odtworzyć ponownie
-                            entry.target.addEventListener('animationend', () => {
-                                entry.target.classList.remove('image-scale-animation');
-                            }, { once: true }); // Użyj { once: true } aby listener został usunięty po pierwszym wywołaniu
-                        }
-                    });
-                }, {
-                    threshold: 0.5 // Uruchom, gdy 50% obrazka jest widoczne
-                });
-
-                observer.observe(imageToAnimate);
-            }
-
             // Uogólniony kod dla hotspotów
             const hotspotContainers = document.querySelectorAll('.pilot-image-container, .schematic-image-container'); 
 
@@ -1376,6 +1334,37 @@
                         hotspot.setAttribute('aria-expanded', 'false');
                     });
                 }
+            });
+
+            // Animacja "wjazdu" dla zielonych linii
+            const greenLinesToAnimate = document.querySelectorAll(
+                '.product-title-group .green-line, ' +
+                '.discovery-section .discovery-green-line, ' +
+                '.schematic-section .schematic-content .schematic-green-line, ' +
+                '.panel-functions-section .panel-functions-header .schematic-green-line, ' +
+                '.adapter-section .adapter-content-container .schematic-green-line'
+            );
+
+            const lineObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3 // Kiedy 30% elementu jest widoczne
+            };
+
+            const lineRevealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // observer.unobserve(entry.target); // Usunięto, aby animacja mogła się powtarzać
+                    } else {
+                        entry.target.classList.remove('is-visible'); // Resetuj animację, gdy element znika
+                    }
+                });
+            }, lineObserverOptions);
+
+            greenLinesToAnimate.forEach(line => {
+                line.classList.add('reveal-green-line-on-scroll');
+                lineRevealObserver.observe(line);
             });
             
             // Kod dla galerii inspiracji
