@@ -863,11 +863,15 @@
             }
             
             /* Centrowanie zielonych linii w widoku mobilnym */
-            .product-title-group .green-line,
             .discovery-green-line,
             .adapter-content-container .schematic-green-line {
                 margin-left: auto;
                 margin-right: auto;
+            }
+            .product-title-group .green-line { /* Zwiększenie szerokości paska w sekcji 1 na mobilnych */
+                width: calc(3.906cqi * 3);
+                margin-left: auto; /* Zachowanie centrowania */
+                margin-right: auto; /* Zachowanie centrowania */
             }
 
             .product-pre-title {
@@ -876,6 +880,14 @@
             .product-subtitle {
                 font-size: 15px; /* Ustawienie rozmiaru dla wersji mobilnej */
                 margin-top: 13px; /* Dodanie marginesu górnego dla wersji mobilnej */
+                margin-bottom: 13px;
+            }
+            .product-description {
+                font-size: 13px; /* Ustawienie rozmiaru dla wersji mobilnej */
+                margin-top: 13px; /* Dodanie marginesu górnego dla wersji mobilnej */
+            }
+            .product-description > span { /* Ustawienie rozmiaru czcionki dla span wewnątrz product-description */
+                font-size: 13px !important; /* Nadpisanie inline stylu dla wersji mobilnej */
             }
             .product-title { font-size: 36px; }
             .features-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -898,8 +910,8 @@
             .discovery-image { position: relative; width: 100%; margin-top: 1.953cqi; }
             .discovery-list { text-align: left; max-width: 39.063cqi; margin: 0 auto; }
             .benefits-grid { grid-template-columns: 1fr; }
-            .benefit-title { font-size: 4cqi; }
-            .benefit-description { font-size: 2cqi; }
+            .benefit-title { font-size: 28px; } /* Zmiana rozmiaru dla mobilnych */
+            .benefit-description { font-size: 15px; } /* Zmiana rozmiaru dla mobilnych */
             .panel-functions-section { align-items: center; } /* Na mobilnych przywracamy centrowanie dla całej sekcji */
             .panel-functions-header { width: 100%; text-align: center; } /* Nagłówek na całą szerokość i wyśrodkowany tekst */
             .panel-functions-header .schematic-green-line { margin-left: auto; margin-right: auto; } /* Linia wyśrodkowana na mobilnych */
@@ -923,6 +935,9 @@
             .adapter-warning {
                 font-size: 15px; /* Zwiększenie czcionki dla ostrzeżenia na mobilnych */
             }
+            .new-youtube-section { /* Dodanie marginesu dolnego do ostatniej sekcji na mobilnych */
+                margin-bottom: 30px;
+            }
             .gallery-slide { flex-basis: 48%; } /* Dwa slajdy widoczne na tabletach */
         }
 
@@ -936,11 +951,14 @@
                 --tooltip-padding-x: 5cqi;   /* Oryginalnie 2cqi, przeskalowane proporcjonalnie (2 * 2.5 = 5) */
             }
             .tooltip { 
+                left: 50%; /* Start na środku hotspotu */
+                top: 50%; /* Pionowo na środku hotspotu */
+                transform: translate(-50%, -50%); /* Wyśrodkowanie tooltipa względem jego własnych wymiarów */
                 height: var(--hotspot-size); /* Wysokość tooltipa równa wysokości hotspotu */
                 font-size: calc(var(--hotspot-size) * 0.35); /* Zmniejszona czcionka w tooltipie */
                 border-radius: calc(var(--hotspot-size) / 2); /* Dostosowany border-radius do nowej wysokości */
-                padding-top: 0; /* Usunięcie explicit paddingu, flex wyśrodkuje */
-                padding-bottom: 0; /* Usunięcie explicit paddingu, flex wyśrodkuje */
+                padding-top: 0; 
+                padding-bottom: 0; 
             }
             
             .features-grid { 

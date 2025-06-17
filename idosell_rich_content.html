@@ -863,11 +863,15 @@
             }
             
             /* Centrowanie zielonych linii w widoku mobilnym */
-            .product-title-group .green-line,
             .discovery-green-line,
             .adapter-content-container .schematic-green-line {
                 margin-left: auto;
                 margin-right: auto;
+            }
+            .product-title-group .green-line { /* Zwiększenie szerokości paska w sekcji 1 na mobilnych */
+                width: calc(3.906cqi * 3);
+                margin-left: auto; /* Zachowanie centrowania */
+                margin-right: auto; /* Zachowanie centrowania */
             }
 
             .product-pre-title {
@@ -906,8 +910,8 @@
             .discovery-image { position: relative; width: 100%; margin-top: 1.953cqi; }
             .discovery-list { text-align: left; max-width: 39.063cqi; margin: 0 auto; }
             .benefits-grid { grid-template-columns: 1fr; }
-            .benefit-title { font-size: 4cqi; }
-            .benefit-description { font-size: 2cqi; }
+            .benefit-title { font-size: 28px; } /* Zmiana rozmiaru dla mobilnych */
+            .benefit-description { font-size: 15px; } /* Zmiana rozmiaru dla mobilnych */
             .panel-functions-section { align-items: center; } /* Na mobilnych przywracamy centrowanie dla całej sekcji */
             .panel-functions-header { width: 100%; text-align: center; } /* Nagłówek na całą szerokość i wyśrodkowany tekst */
             .panel-functions-header .schematic-green-line { margin-left: auto; margin-right: auto; } /* Linia wyśrodkowana na mobilnych */
