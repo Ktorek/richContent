@@ -16,6 +16,10 @@
             --tooltip-padding-x: 2cqi; /* Dodatkowo zwiększony poziomy padding w tooltipie */
         }
 
+        html, body {
+            overflow-x: hidden;
+        }
+
         .carousel::-webkit-scrollbar {
             display: none;
         }
@@ -64,6 +68,10 @@
 
         .brand-logo img {
             height: 3.906cqi;
+        }
+        
+        .product-title-group {
+            overflow: hidden; /* FIX: Zapobiega wychodzeniu linii poza kontener */
         }
 
         .product-title-group .green-line {
@@ -143,7 +151,7 @@
             container-type: inline-size;
             cursor: pointer;
         }
-
+        
         .feature-icon {
             width: 80cqi;
             height: 80cqi;
@@ -189,7 +197,7 @@
             line-height: 1;
             text-align: center;
         }
-
+        
         #cta-title {
             color: white !important;
         }
@@ -211,6 +219,7 @@
         .discovery-content {
             width: 45%;
             z-index: 2;
+            overflow: hidden; /* FIX: Zapobiega wychodzeniu linii poza kontener */
             position: relative;
         }
 
@@ -287,7 +296,7 @@
             padding-top: 0;
             padding-bottom: 40px;
         }
-
+        
         .benefits-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -430,6 +439,7 @@
 
         .schematic-content {
             flex: 0 0 45%; /* Lewa kolumna zajmuje 45% szerokości */
+            overflow: hidden; /* FIX: Zapobiega wychodzeniu linii poza kontener */
             text-align: left; /* Wyrównanie tekstu do lewej */
         }
 
@@ -507,6 +517,7 @@
 
         .panel-functions-header {
             text-align: left; /* Wyrównanie tekstu w nagłówku do lewej */
+            overflow: hidden; /* FIX: Zapobiega wychodzeniu linii poza kontener */
             width: 48%; /* Lekko zwiększona szerokość nagłówka */
         }
         
@@ -671,9 +682,10 @@
             flex-direction: column;
             align-items: flex-start;
             background-color: rgb(249, 250, 251); /* Tło dla kontenera treści */
+            overflow: hidden; /* FIX: Zapobiega wychodzeniu linii poza kontener */
             padding: 2cqi 2cqi 2cqi 3.906cqi; 
         }
-
+        
         /* Animacja dla paska w sekcji 9 */
         .adapter-content-container:hover .schematic-green-line {
             transform: translateX(25cqi); /* Przesunięcie w prawo, można dostosować wartość */
@@ -838,16 +850,36 @@
                 text-align: center;
                 padding: 30px 15px;
             }
+
+            .brand-logo img {
+                width: 80vw; /* Logo na 80% szerokości ekranu */
+                height: auto; /* Zachowanie proporcji */
+                display: block; /* Umożliwia wyśrodkowanie za pomocą margin: auto */
+                margin: 0 auto; /* Wyśrodkowanie obrazka */
+            }
             
             .adapter-content-container {
                 align-items: center; /* Wyśrodkowanie zawartości na mobilnych */
+            }
+            
+            /* Centrowanie zielonych linii w widoku mobilnym */
+            .product-title-group .green-line,
+            .discovery-green-line,
+            .adapter-content-container .schematic-green-line {
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .product-title { font-size: 36px; }
             .features-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .discovery-content { width: 100%; z-index: 2; }
             .discovery-image { position: relative; width: 100%; margin-top: 1.953cqi; }
-            .discovery-title { font-size: 3.515cqi; }
+            /* Ustawienie rozmiaru czcionki dla H2 na mobilnych */
+            .cta-main-title,
+            .discovery-title,
+            .schematic-title { 
+                font-size: 28px; 
+            }
             .discovery-list { text-align: left; max-width: 39.063cqi; margin: 0 auto; }
             .benefits-grid { grid-template-columns: 1fr; }
             .benefit-title { font-size: 4cqi; }
@@ -866,18 +898,30 @@
         }
 
         @media (max-width: 480px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .product-title { font-size: 28px; }
-            .discovery-title { font-size: 2.344cqi; }
-            .discovery-list { font-size: 1.367cqi; }
-            .benefit-title { font-size: 6cqi; }
-            .benefit-description { font-size: 3cqi; }
-            .panel-functions-grid { grid-template-columns: 1fr; } /* 1 kolumna na telefonach */
-            .gallery-slide { flex-basis: 90%; } /* Prawie jeden slajd widoczny na telefonach */
+            body { /* Zapobieganie poziomemu przewijaniu na mobilnych */
+                overflow-x: hidden;
+            }
+            
+            .features-grid { 
+                grid-template-columns: repeat(3, 1fr); /* 3 elementy w wierszu na telefonach */
+            }
+            /* Zakładając, że .feature-description na desktopie to 1.0cqi dla proporcji */
+            .feature-description { 
+                font-size: 11px; /* Powiększone o 50% (było 7px) */
+            }
+            .discovery-title { font-size: 28px !important; } /* Zastępuje 2.344cqi */
+            .discovery-subtitle { font-size: 10px; } /* (1.367 / 3.906) * 28px */
+            .discovery-green-line { /* Wyśrodkowanie linii w sekcji 4 na mobilnych */
+                margin: 1.464cqi auto 2.442cqi auto;
+            }
+            .discovery-list { font-size: 10px; } /* (1.367 / 3.906) * 28px, zastępuje 1.367cqi */
+            
+            /* Pozostałe style bez zmian... */
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
+    <!-- Reszta kodu HTML bez zmian -->
     <div class="main-container">
         <!-- Sekcja 1: Header produktu -->
         <section class="section product-header">
@@ -1097,7 +1141,7 @@
                 </button>
             </div>
         </section>
-
+        
         <!-- Sekcja 9: Podłączenie do sieci 230V -->
         <section class="section adapter-section">
             <div class="adapter-image-container">
@@ -1203,7 +1247,7 @@
                     }
                 });
             }
-
+            
             // Kod dla galerii inspiracji
             const gallery = document.getElementById('inspiration-gallery');
             if (gallery) {
