@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Girlanda solarna Sollis Lumiled 20m z pilotem</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,10 +14,6 @@
             --dark-text: #292929; 
             --hotspot-size: 4.8cqi; /* Jeszcze bardziej powiększony rozmiar hotspotu */
             --tooltip-padding-x: 2cqi; /* Dodatkowo zwiększony poziomy padding w tooltipie */
-        }
-
-        html, body {
-            overflow-x: hidden;
         }
 
         /* specyficzne dla girlandy - usuwa linie dolną */
@@ -138,7 +133,7 @@
         /* Sekcja 2 - Cechy produktu */
         .features-section {
             background-color: white;
-            padding: 40px 0;
+            padding: 40px 40px; /* Dodano padding po prawej i lewej stronie */
         }
 
         .features-grid {
@@ -788,20 +783,34 @@
             margin-top: 2cqi;
         }
 
-        .gallery-dots-nav .dot {
+        #rich-content-wrapper .gallery-dots-nav .dot {
             display: inline-block;
-            width: 1cqi;
-            height: 1cqi;
+            width: 1.2cqi; /* Lekko powiększone dla lepszej widoczności */
+            height: 1.2cqi; /* Lekko powiększone dla lepszej widoczności */
             border-radius: 50%;
-            background-color: #ccc;
+            background-color: #e0e0e0; /* Jaśniejszy szary dla nieaktywnych kropek */
+            border: 1px solid #d0d0d0; /* Subtelne obramowanie */
             margin: 0 0.5cqi;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            padding: 0; /* Usunięcie domyślnego paddingu przycisku */
+            box-sizing: border-box; /* Wymiary uwzględniają padding i border */
+            font-size: 0; /* Zapobiega wpływowi rozmiaru czcionki na wysokość */
+            line-height: 0; /* Zapobiega wpływowi wysokości linii na wysokość */
         }
         
-        .gallery-dots-nav .dot.active {
-            background-color: var(--dark-text);
+        #rich-content-wrapper .gallery-dots-nav .dot.active {
+            background-color: var(--brand-green); /* Użycie koloru marki dla aktywnej kropki */
+            border-color: #4FA32E; /* Ciemniejszy zielony dla obramowania aktywnej kropki */
+            transform: scale(1.2); /* Lekkie powiększenie aktywnej kropki */
         }
+
+        #rich-content-wrapper .gallery-dots-nav .dot:not(.active):hover {
+            background-color: #d0d0d0; /* Ciemniejszy szary przy najechaniu na nieaktywną kropkę */
+            border-color: #c0c0c0; /* Ciemniejsze obramowanie przy najechaniu */
+        }
+
+
         
         /* Sekcja 11 - Wideo YouTube */
         .youtube-video-container {
@@ -824,6 +833,11 @@
 
         /* Responsywność */
         @media (max-width: 768px) {
+            
+            html, body {
+                overflow-x: hidden;
+            }
+
             .main-container {
                 max-width: 95%;
                 margin: 0 2.5%;
@@ -843,12 +857,12 @@
             }
             
             /* Zwiększenie szerokości i centrowanie wszystkich zielonych linii w widoku mobilnym */
-            .product-title-group .green-line,
-            .discovery-green-line,
-            .schematic-green-line, /* Obejmuje użycie w .schematic-content, .panel-functions-header, .adapter-content-container */
-            .benefit-green-line {
+            #rich-content-wrapper .product-title-group .green-line,
+            #rich-content-wrapper .discovery-green-line,
+            #rich-content-wrapper .schematic-green-line, /* Obejmuje użycie w .schematic-content, .panel-functions-header, .adapter-content-container */
+            #rich-content-wrapper .benefit-green-line {
                 width: calc(3.906cqi * 3);
-                margin-left: auto;
+                margin-left: auto !important;
                 margin-right: auto;
             }
             /* Zapewnienie centrowania dla linii w .panel-functions-header (sekcje 7, 8, 10, 11) w mobilnej wersji */
@@ -886,10 +900,10 @@
             #rich-content-wrapper .schematic-title { 
                 font-size: 28px; 
             }
-            .schematic-subtitle {
+            #rich-content-wrapper .schematic-subtitle {
                 font-size: 18px; /* Ustawienie rozmiaru dla podtytułów schematów na mobilnych */
             }
-            .schematic-description {
+            #rich-content-wrapper .schematic-description {
                 font-size: 15px; /* Ustawienie rozmiaru dla opisów schematów na mobilnych */
                 text-align: left;
             }
@@ -919,7 +933,7 @@
             #rich-content-wrapper .adapter-warning {
                 font-size: 15px; /* Zwiększenie czcionki dla ostrzeżenia na mobilnych */
             }
-            .adapter-cta-button {
+            #rich-content-wrapper .adapter-cta-button {
                 padding: 15px 20px; /* Zwiększony padding dla lepszej klikalności */
                 font-size: 18px;    /* Zwiększona czcionka */
             }
@@ -942,7 +956,7 @@
             #rich-content-wrapper .sollis-tooltip { 
                 top: 50%; /* Pionowo na środku hotspotu */
                 transform: translateY(-50%); /* Wyśrodkowanie tooltipa w pionie względem jego własnej wysokości */
-                height: var(--hotspot-size); /* Wysokość tooltipa równa wysokości hotspotu */
+                height: var(--hotspot-size); /* Wysokość tooltipa równa wysokości hotspotu */ /* Zostawiamy tę wysokość, bo jest w :root */
                 font-size: calc(var(--hotspot-size) * 0.35); /* Zmniejszona czcionka w tooltipie */
                 border-radius: calc(var(--hotspot-size) / 2); /* Dostosowany border-radius do nowej wysokości */
                 padding-top: 0 !important; /* Dodano !important */
@@ -1005,6 +1019,13 @@
             }
             .gallery-arrow.prev { left: 10px; } /* Dostosowane pozycjonowanie od krawędzi */
             .gallery-arrow.next { right: 10px; }
+        }
+        @media (max-width: 480px) {
+            #rich-content-wrapper .gallery-dots-nav .dot {
+                width: 10px;    /* Ustawienie szerokości na 10px dla mobilnych */
+                height: 10px;   /* Ustawienie wysokości na 10px dla mobilnych */
+                margin: 0 4px;  /* Stały margines w px dla mobilnych */
+            }
         }
     </style>
 </head>
@@ -1277,7 +1298,7 @@
                     <!-- Tekst: Ostrzeżenie dotyczące adaptera -->
                     UWAGA! Adapter jest do nabycia na osobnej aukcji, nie jest częścią zestawu girlandy.
                 </p>
-                <a href="https://leddo.pl/pl/products/zestaw-girlanda-solarna-sollis-30x-led-2700k-20m-pilot-ip65-adapter-sieciowy-9w-lumiled-35742.html?query_id=1" class="adapter-cta-button">
+                <a  href="https://leddo.pl/pl/products/zestaw-girlanda-solarna-sollis-30x-led-2700k-20m-pilot-ip65-adapter-sieciowy-9w-lumiled-35742.html?query_id=1" class="adapter-cta-button">
                     <!-- Tekst: Przycisk CTA adaptera -->
                     KUP ZESTAW: GIRLANDA SOLLIS + ADAPTER ►
                 </a>

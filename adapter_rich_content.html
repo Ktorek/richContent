@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Girlanda solarna Sollis Lumiled 20m z pilotem</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -16,8 +16,9 @@
             --tooltip-padding-x: 2cqi; /* Dodatkowo zwiększony poziomy padding w tooltipie */
         }
 
-        html, body {
-            overflow-x: hidden;
+        /* specyficzne dla girlandy - usuwa linie dolną */
+        #projector_in_bundle.hotspot {
+            border-bottom: none !important;
         }
 
         .carousel::-webkit-scrollbar {
@@ -87,7 +88,7 @@
             font-size: 1.853cqi;
             line-height: 1;
             color:#292929;
-            margin: 0 0 3.877cqi 0;
+            margin: 0 0 2.477cqi 0;
         }
 
         .product-title {
@@ -102,7 +103,7 @@
             font-size: 3.153cqi;
             color: var(--dark-text);
             margin-bottom: 0.01cqi;
-            margin-top: 0;
+            margin-top: 3px;
             line-height: 1;
         }
 
@@ -120,6 +121,8 @@
         .product-image img {
             width: 100%;
             height: 100%;
+            max-height: 450px; /* Dodane ograniczenie maksymalnej wysokości */
+            object-position: 0% 60%; /* Przesunięcie obrazka do góry (środek poziomo, góra pionowo) */
             object-fit: cover;
             border-radius: 0;
             transition: transform 0.3s ease;
@@ -132,12 +135,13 @@
         /* Sekcja 2 - Cechy produktu */
         .features-section {
             background-color: white;
-            padding: 40px 0;
+            padding: 40px 40px;
         }
 
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            display: grid; /* Przywrócenie do grid */
+            justify-content: center; /* Centruje elementy w poziomie */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamiczna siatka z centrowaniem */
             gap: 15px;
         }
 
@@ -174,7 +178,7 @@
 
         /* Sekcja 3 - Call to action */
         .cta-section {
-            background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_2.webp');
+            background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_2.webp'); /* Poprawiony URL */
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -185,7 +189,7 @@
             container-type: inline-size;
         }
 
-        .cta-main-title {
+        #rich-content-wrapper .cta-main-title {
             font-size: 4cqi;
             font-weight: bold;
             color: white;
@@ -194,7 +198,7 @@
             text-align: center;
         }
         
-        #cta-title {
+        #rich-content-wrapper #cta-title {
             color: white !important;
         }
 
@@ -219,7 +223,7 @@
             position: relative;
         }
 
-        .discovery-title {
+        #rich-content-wrapper .discovery-title {
             font-size: 3.906cqi;
             font-weight: bold;
             color: var(--dark-text);
@@ -227,7 +231,7 @@
             line-height: 1.1;
         }
 
-        .discovery-subtitle {
+        #rich-content-wrapper .discovery-subtitle {
             font-size: 1.367cqi;
             color: var(--dark-text);
             font-weight: bold;
@@ -356,18 +360,18 @@
         }
 
         .benefit-box-large::after {
-             background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_4.webp');
+             background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_4.webp');
         }
 
         .benefit-box-top-right::after {
-             background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_5.webp');
+             background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_5.webp');
         }
 
         .benefit-box-bottom-right::after {
-             background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_6.webp');
+             background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_6.webp');
         }
 
-        .benefit-title {
+        #rich-content-wrapper .benefit-title {
             font-size: 2.8cqi;
             font-weight: bold;
             line-height: 1.2;
@@ -395,12 +399,12 @@
             transition: opacity 0.3s ease-out 0.15s, transform 0.3s ease-out 0.15s; /* Lekko opóźnione pojawienie */
         }
 
-        .benefit-box:hover .benefit-title,
+        #rich-content-wrapper .benefit-box:hover .benefit-title,
         .benefit-box:hover .benefit-description {
             opacity: 1;
             transform: scale(1); /* Powrót do normalnego rozmiaru i widoczności */
         }
-
+        
         .benefit-box:hover .benefit-green-line {
             opacity: 1;
             transform: translateX(0); /* Wjazd z lewej strony */
@@ -438,7 +442,7 @@
             text-align: left; /* Wyrównanie tekstu do lewej */
         }
 
-        .schematic-title {
+        #rich-content-wrapper .schematic-title {
             font-size: 3.906cqi;
             font-weight: bold;
             color: var(--dark-text);
@@ -456,7 +460,7 @@
             /* transition: transform 0.3s ease; Usunięto dla nowej animacji */
         }
 
-        .schematic-subtitle {
+        #rich-content-wrapper .schematic-subtitle {
             font-size: 2cqi; /* Lekko powiększony napis */
             color: var(--dark-text);
             font-weight: 200; /* Dopasowanie do .product-pre-title */
@@ -466,7 +470,7 @@
             /* text-align: left; - dziedziczone z .schematic-content */
         }
 
-        .schematic-description {
+        #rich-content-wrapper .schematic-description {
             font-size: 1.8cqi; /* Ustawiony rozmiar czcionki */
             color: #555; /* Lekko ciemniejszy tekst dla czytelności */
             line-height: 1.6;
@@ -503,11 +507,11 @@
             width: 48%; /* Lekko zwiększona szerokość nagłówka */
         }
         
-        .panel-functions-header .schematic-green-line {
+        #rich-content-wrapper .panel-functions-header .schematic-green-line {
             margin-left: 0; /* Linia wyrównana do lewej */
             /* transition: transform 0.3s ease; Usunięto dla nowej animacji */
         }
-
+        
         .panel-functions-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -536,7 +540,7 @@
             object-fit: cover; /* Wypełnia kontener, zachowując proporcje, przydatne jeśli obrazek jest większy niż kontener */
         }
 
-        .panel-function-description {
+        #rich-content-wrapper .panel-function-description {
             font-size: 1.85cqi; /* Poprzednio 1.95cqi, zmniejszone o 20% */
             color: #555;
             line-height: 1.2; /* Zmieniona interlinia na 1.2 */
@@ -554,7 +558,7 @@
             z-index: 5;
         }
 
-        .hotspot {
+        .sollis-hotspot {
             position: absolute;
             width: var(--hotspot-size);
             height: var(--hotspot-size);
@@ -571,7 +575,7 @@
             overflow: visible; /* Pozwala tooltipowi wyjść poza hotspot */
         }
 
-        .hotspot:hover {
+        .sollis-hotspot:hover {
             transform: scale(1.05);
         }
 
@@ -583,20 +587,23 @@
             user-select: none;
         }
 
-        .tooltip {
+        #rich-content-wrapper .sollis-tooltip {
             position: absolute;
             left: -5px; /* Lewa krawędź tooltipa 5px na lewo od lewej krawędzi hotspotu */
+            /* left: calc(100% + 0.5cqi); */ /* Odsuwa tooltip w prawo od hotspotu */
             top: 50%;
             transform: translateY(-50%);
             height: calc(var(--hotspot-size) * 1.2); /* Tooltip o 20% wyższy niż hotspot */
+            /* min-height: calc(var(--hotspot-size) * 0.8); */ /* Zapewnia minimalną wysokość, ale pozwala na rozszerzenie */
+            /* height: auto; */ /* Pozwala na dopasowanie wysokości do treści */
             background-color: rgba(255, 255, 255, 0.87); /* Ustawiona przezroczystość na 0.87 */
-            color: var(--dark-text);
+            color: var(--dark-text) !important; /* Dodano !important dla większej odporności */
             font-family: "Roboto", sans-serif;
             font-size: calc(var(--hotspot-size) * 0.45);
             padding: 0.4cqi var(--tooltip-padding-x); /* Dodatkowo zwiększony padding pionowy i użycie zwiększonego poziomego */
             border-radius: calc(var(--hotspot-size) * 1.2 / 2); /* Kształt pigułki dostosowany do nowej wysokości */
             box-sizing: border-box;
-            display: flex;
+            display: flex !important; /* Dodano !important dla większej odporności */
             align-items: center;
             white-space: nowrap; /* Zapobiega zawijaniu krótkiego tekstu */
             opacity: 0;
@@ -607,24 +614,25 @@
         }
         
         /* Custom background for pilot section */
-        .pilot-section-custom-bg {
+        #rich-content-wrapper .pilot-section-custom-bg {
             background-color: white;
         }
 
-        .tooltip.position-left {
+        #rich-content-wrapper .sollis-tooltip.position-left {
             left: auto; /* Usuwa domyślne pozycjonowanie z lewej */
             right: -5px; /* Prawa krawędź tooltipa 5px na prawo od prawej krawędzi hotspotu */
+            /* right: calc(100% + 0.5cqi); */ /* Odsuwa tooltip w lewo od hotspotu */
             /* Ensure vertical alignment is maintained */
             top: 50%;
             transform: translateY(-50%);
         }
         
-        .hotspot.active .tooltip {
+        #rich-content-wrapper .sollis-hotspot.active .sollis-tooltip {
             opacity: 1;
             visibility: visible;
         }
 
-        .hotspot.active {
+        .sollis-hotspot.active {
             z-index: 15; /* Wyższy z-index dla aktywnego hotspotu, aby był nad innymi nieaktywnymi */
         }
         
@@ -665,7 +673,7 @@
             padding: 2cqi 2cqi 2cqi 3.906cqi; 
         }
         
-        .adapter-warning {
+        #rich-content-wrapper .adapter-warning {
             font-size: 2.25cqi; /* Zmniejszona o 25% (3 * 0.75) */
             color: #555;
             line-height: 1.5;
@@ -673,7 +681,7 @@
             font-weight: 300;
         }
         
-        .adapter-cta-button {
+        #rich-content-wrapper .adapter-cta-button {
             display: block; /* Zmiana na block, aby zajął całą szerokość */
             width: 100%;    /* Przycisk na całą szerokość rodzica */
             background-color: var(--brand-green);
@@ -687,7 +695,7 @@
             cursor: pointer;
         }
 
-        .adapter-cta-button:hover {
+        #rich-content-wrapper .adapter-cta-button:hover {
             background-color: #4FA32E; /* Ciemniejszy odcień nowego zielonego (#5BBA35) */
         }
         
@@ -778,20 +786,34 @@
             margin-top: 2cqi;
         }
 
-        .gallery-dots-nav .dot {
+        #rich-content-wrapper .gallery-dots-nav .dot {
             display: inline-block;
-            width: 1cqi;
-            height: 1cqi;
+            width: 1.2cqi; /* Lekko powiększone dla lepszej widoczności */
+            height: 1.2cqi; /* Lekko powiększone dla lepszej widoczności */
             border-radius: 50%;
-            background-color: #ccc;
+            background-color: #e0e0e0; /* Jaśniejszy szary dla nieaktywnych kropek */
+            border: 1px solid #d0d0d0; /* Subtelne obramowanie */
             margin: 0 0.5cqi;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            padding: 0; /* Usunięcie domyślnego paddingu przycisku */
+            box-sizing: border-box; /* Wymiary uwzględniają padding i border */
+            font-size: 0; /* Zapobiega wpływowi rozmiaru czcionki na wysokość */
+            line-height: 0; /* Zapobiega wpływowi wysokości linii na wysokość */
         }
         
-        .gallery-dots-nav .dot.active {
-            background-color: var(--dark-text);
+        #rich-content-wrapper .gallery-dots-nav .dot.active {
+            background-color: var(--brand-green); /* Użycie koloru marki dla aktywnej kropki */
+            border-color: #4FA32E; /* Ciemniejszy zielony dla obramowania aktywnej kropki */
+            transform: scale(1.2); /* Lekkie powiększenie aktywnej kropki */
         }
+
+        #rich-content-wrapper .gallery-dots-nav .dot:not(.active):hover {
+            background-color: #d0d0d0; /* Ciemniejszy szary przy najechaniu na nieaktywną kropkę */
+            border-color: #c0c0c0; /* Ciemniejsze obramowanie przy najechaniu */
+        }
+
+
         
         /* Sekcja 11 - Wideo YouTube */
         .youtube-video-container {
@@ -814,6 +836,11 @@
 
         /* Responsywność */
         @media (max-width: 768px) {
+            
+            html, body {
+                overflow-x: hidden;
+            }
+
             .main-container {
                 max-width: 95%;
                 margin: 0 2.5%;
@@ -833,12 +860,12 @@
             }
             
             /* Zwiększenie szerokości i centrowanie wszystkich zielonych linii w widoku mobilnym */
-            .product-title-group .green-line,
-            .discovery-green-line,
-            .schematic-green-line, /* Obejmuje użycie w .schematic-content, .panel-functions-header, .adapter-content-container */
-            .benefit-green-line {
+            #rich-content-wrapper .product-title-group .green-line,
+            #rich-content-wrapper .discovery-green-line,
+            #rich-content-wrapper .schematic-green-line, /* Obejmuje użycie w .schematic-content, .panel-functions-header, .adapter-content-container */
+            #rich-content-wrapper .benefit-green-line {
                 width: calc(3.906cqi * 3);
-                margin-left: auto;
+                margin-left: auto !important;
                 margin-right: auto;
             }
             /* Zapewnienie centrowania dla linii w .panel-functions-header (sekcje 7, 8, 10, 11) w mobilnej wersji */
@@ -850,66 +877,66 @@
                 align-items: center; /* Wyśrodkowanie zawartości na mobilnych */
             }
 
-            .product-pre-title {
+            #rich-content-wrapper .product-pre-title {
                 font-size: 24px; /* Zwiększenie dla wersji mobilnej */
             }
-            .product-subtitle {
+            #rich-content-wrapper .product-subtitle {
                 font-size: 15px; /* Ustawienie rozmiaru dla wersji mobilnej */
                 margin-top: 13px; /* Dodanie marginesu górnego dla wersji mobilnej */
                 margin-bottom: 13px;
             }
-            .product-description {
+            #rich-content-wrapper .product-description {
                 font-size: 13px; /* Ustawienie rozmiaru dla wersji mobilnej */
                 margin-top: 13px; /* Dodanie marginesu górnego dla wersji mobilnej */
             }
-            .product-description > span { /* Ustawienie rozmiaru czcionki dla span wewnątrz product-description */
+            #rich-content-wrapper .product-description > span { /* Ustawienie rozmiaru czcionki dla span wewnątrz product-description */
                 font-size: 13px !important; /* Nadpisanie inline stylu dla wersji mobilnej */
             }
-            .product-title { font-size: 36px; }
+            #rich-content-wrapper .product-title { font-size: 36px; }
             .features-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .discovery-content { width: 100%; z-index: 2; }
             /* Ustawienie rozmiaru czcionki dla H2 na mobilnych */
-            .cta-main-title { 
+            #rich-content-wrapper .cta-main-title { 
                 font-size: 22px; /* Zmniejszenie dla sekcji 3 */
             }
-            .discovery-title,
-            .schematic-title { 
+            #rich-content-wrapper .discovery-title,
+            #rich-content-wrapper .schematic-title { 
                 font-size: 28px; 
             }
-            .schematic-subtitle {
+            #rich-content-wrapper .schematic-subtitle {
                 font-size: 18px; /* Ustawienie rozmiaru dla podtytułów schematów na mobilnych */
             }
-            .schematic-description {
+            #rich-content-wrapper .schematic-description {
                 font-size: 15px; /* Ustawienie rozmiaru dla opisów schematów na mobilnych */
                 text-align: left;
             }
             .discovery-image { position: relative; width: 100%; margin-top: 1.953cqi; }
             .discovery-list { text-align: left; max-width: 39.063cqi; margin: 0 auto; }
             .benefits-grid { grid-template-columns: 1fr; }
-            .benefit-title { font-size: 28px; } /* Zmiana rozmiaru dla mobilnych */
-            .benefit-description { font-size: 15px; } /* Zmiana rozmiaru dla mobilnych */
+            #rich-content-wrapper .benefit-title { font-size: 28px; } /* Zmiana rozmiaru dla mobilnych */
+            #rich-content-wrapper .benefit-description { font-size: 15px; } /* Zmiana rozmiaru dla mobilnych */
             .panel-functions-section { align-items: center; } /* Na mobilnych przywracamy centrowanie dla całej sekcji */
             .panel-functions-header { width: 100%; text-align: center; } /* Nagłówek na całą szerokość i wyśrodkowany tekst */
             .schematic-text-content-area { 
                 flex-direction: column; 
                 gap: 1.5cqi; 
                 align-items: center; /* Wyśrodkowanie .schematic-content i .schematic-description-area */
-            }
-            .panel-function-description {
+            }        
+            #rich-content-wrapper .panel-function-description {
                 font-size: 15px; /* Ustawienie rozmiaru dla opisów funkcji panelu na mobilnych */
                 align-items: center; /* Wyśrodkowanie .schematic-content i .schematic-description-area */
             }
             .schematic-description-area, .schematic-content { text-align: center; } /* Wyśrodkowanie tekstu w kolumnach na mobilnych */
             .panel-functions-grid { grid-template-columns: repeat(2, 1fr); } /* 2 kolumny na tabletach */
-            .pilot-image-container {
+            #rich-content-wrapper .pilot-image-container {
                 margin-top: 0; /* Usunięcie nachodzenia na mobilnych, odstęp kontrolowany przez 'gap' rodzica */
                 width: 100%;   /* Obrazek pilota na całą szerokość rodzica */
                 height: auto;  /* Wysokość dostosowana do proporcji obrazka */
-            }
-            .adapter-warning {
+            }        
+            #rich-content-wrapper .adapter-warning {
                 font-size: 15px; /* Zwiększenie czcionki dla ostrzeżenia na mobilnych */
             }
-            .adapter-cta-button {
+            #rich-content-wrapper .adapter-cta-button {
                 padding: 15px 20px; /* Zwiększony padding dla lepszej klikalności */
                 font-size: 18px;    /* Zwiększona czcionka */
             }
@@ -929,44 +956,40 @@
                 --tooltip-padding-x: 5cqi;   /* Oryginalnie 2cqi, przeskalowane proporcjonalnie (2 * 2.5 = 5) */
             }
             /* Mobilne style dla tooltipów - wspólne */
-            .tooltip { 
+            #rich-content-wrapper .sollis-tooltip { 
                 top: 50%; /* Pionowo na środku hotspotu */
                 transform: translateY(-50%); /* Wyśrodkowanie tooltipa w pionie względem jego własnej wysokości */
-                height: var(--hotspot-size); /* Wysokość tooltipa równa wysokości hotspotu */
+                height: var(--hotspot-size); /* Wysokość tooltipa równa wysokości hotspotu */ /* Zostawiamy tę wysokość, bo jest w :root */
                 font-size: calc(var(--hotspot-size) * 0.35); /* Zmniejszona czcionka w tooltipie */
                 border-radius: calc(var(--hotspot-size) / 2); /* Dostosowany border-radius do nowej wysokości */
-                padding-top: 0; 
-                padding-bottom: 0; 
+                padding-top: 0 !important; /* Dodano !important */
+                padding-bottom: 0 !important; /* Dodano !important */
             }
 
             /* --- Tooltipy w SEKCJI 6 (Schemat Girlandy) - Mobilne --- */
             /* Mobilne (Sekcja 6): Tooltip domyślnie (bez .position-left) po PRAWEJ stronie hotspotu */
-            .schematic-image-container .tooltip:not(.position-left) { /* Lewa krawędź tooltipa na równi z lewą krawędzią hotspotu */
+            #rich-content-wrapper .schematic-image-container .sollis-tooltip:not(.position-left) { /* Lewa krawędź tooltipa na równi z lewą krawędzią hotspotu */
                 left: 0px; 
             } 
             /* Mobilne (Sekcja 6): Tooltip z .position-left po LEWEJ stronie hotspotu */
-            .schematic-image-container .tooltip.position-left { /* Prawa krawędź tooltipa na równi z prawą krawędzią hotspotu */
+            #rich-content-wrapper .schematic-image-container .sollis-tooltip.position-left { /* Prawa krawędź tooltipa na równi z prawą krawędzią hotspotu */
                 right: 0px; 
                 left: auto; /* Zapobiega konfliktowi z 'left' z mniej specyficznych reguł */
             }
 
             /* --- Tooltipy w SEKCJI 8 (Pilot) - Mobilne --- */
             /* Przywrócenie centrowania tooltipów dla sekcji pilota na mobilnych */
-            .pilot-image-container .tooltip {
+            #rich-content-wrapper .pilot-image-container .sollis-tooltip {
                 left: 50%;
-                /* top: 50%; jest już w ogólnej regule .tooltip */
-                transform: translate(-50%, -50%); /* Wyśrodkowanie tooltipa względem jego własnych wymiarów */
+                transform: translate(-50%, -50%); 
             }
-            
-            .features-grid { 
-                grid-template-columns: repeat(3, 1fr); /* 3 elementy w wierszu na telefonach */
-            }
+
             /* Zakładając, że .feature-description na desktopie to 1.0cqi dla proporcji */
             .feature-description { 
                 font-size: 11px; /* Powiększone o 50% (było 7px) */
             }
-            .discovery-title { font-size: 28px !important; } /* Zastępuje 2.344cqi */
-            .discovery-subtitle { 
+            #rich-content-wrapper .discovery-title { font-size: 28px !important; } /* Zastępuje 2.344cqi */
+            #rich-content-wrapper .discovery-subtitle { 
                 margin-top: 10px;
                 font-size: 15px;
                 text-align: left;
@@ -996,33 +1019,40 @@
             .gallery-arrow.prev { left: 10px; } /* Dostosowane pozycjonowanie od krawędzi */
             .gallery-arrow.next { right: 10px; }
         }
+        @media (max-width: 480px) {
+            #rich-content-wrapper .gallery-dots-nav .dot {
+                width: 10px;    /* Ustawienie szerokości na 10px dla mobilnych */
+                height: 10px;   /* Ustawienie wysokości na 10px dla mobilnych */
+                margin: 0 4px;  /* Stały margines w px dla mobilnych */
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
     <!-- Reszta kodu HTML bez zmian -->
-    <div class="main-container">
+    <div class="main-container" id="rich-content-wrapper">
         <!-- Sekcja 1: Header produktu -->
         <section class="section product-header">
-            <div class="product-info">
+            <div class="product-info"> <!-- Zmieniono product-info na product-info -->
                 <div class="brand-logo">
                     <!-- Obrazek: Logo marki -->
-                    <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/lumiled_logo_kolor_trademark_2.webp" alt="Lumiled Logo">
+                    <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/lumiled_logo_kolor_trademark_2.webp" alt="Lumiled Logo">
                 </div>
                 <div class="product-title-group">
-                    <div class="product-pre-title">GIRLANDA SOLARNA</div> <!-- Tekst: Przedtytuł produktu -->
-                    <div class="product-title">SOLLIS</div> <!-- Tekst: Główny tytuł produktu -->
-                    <div class="product-subtitle">30 LED + 2 LED GRATIS</div> <!-- Tekst: Podtytuł produktu -->
+                    <div class="product-pre-title">ZASILACZ SIECIOWY</div> <!-- Tekst: Przedtytuł produktu -->
+                    <div class="product-title">ADAPTER</div> <!-- Tekst: Główny tytuł produktu -->
+                    <div class="product-subtitle">4,8W</div> <!-- Tekst: Podtytuł produktu -->
                     <div class="green-line"></div>
                 </div>
-                <div class="product-description">
-                    <span style="font-size: 2.20cqi; margin-bottom: 0.4cqi; display: block;">20 metrów + pilot sterujący</span> <!-- Tekst: Dodatkowy opis produktu -->
-                    Girlanda SOLLIS marki Lumiled - połączenie estetyki<br> <!-- Tekst: Główny opis produktu -->
-                    z nowoczesną technologią.
+                <div class="product-description"> <!-- Zmieniono product-description na product-description -->
+                    <span style="font-size: 1.8cqi; margin-bottom: 0.4cqi; display: block; font-weight: 600;">Energooszędny i efektywny</span> <!-- Tekst: Dodatkowy opis produktu -->
+                    <span style="font-size: 1.3cqi;">Ładowarka konwertuje standardowe napięcie sieciowe 220-240V<br> <!-- Tekst: Główny opis produktu -->
+                    na 24V, co zapewnia niezawodne i bezpieczne zasilanie.</span>
                 </div>
             </div>
             <div class="product-image">
                 <!-- Obrazek: Główne zdjęcie produktu -->
-                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda1.webp" alt="SOLLIS Girlanda">
+                <img src="https://leddo.pl/hpeciai/5163849c47743d70c541792c352e0c57/pol_pl_Adapter-Zasilajacy-4-8W-do-Girland-Solarnych-Ladowarka-24V-230V-34289_5.webp" alt="SOLLIS Girlanda">
             </div>
         </section>
 
@@ -1031,45 +1061,38 @@
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <!-- Obrazek: Ikona cechy 1 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_1.webp" alt="Energooszczędność LED">
+                        <!-- Obrazek: Ikona cechy 1 (adapter) -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-34.webp" alt="Energooszczędność LED">
                     </div>
                     <div class="feature-description">Biała ciepła barwa światła 2700k</div> <!-- Tekst: Opis cechy 1 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <!-- Obrazek: Ikona cechy 2 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_2.webp" alt="Zasilanie Słoneczne">
+                        <!-- Obrazek: Ikona cechy 2 (adapter) -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-35.webp" alt="Zasilanie Słoneczne">
                     </div>
                     <div class="feature-description">Przystosowana do niekorzystnych warunków</div> <!-- Tekst: Opis cechy 2 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <!-- Obrazek: Ikona cechy 3 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_3.webp" alt="Pilot Zdalnego Sterowania">
+                        <!-- Obrazek: Ikona cechy 3 (adapter) -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-36.webp" alt="Pilot Zdalnego Sterowania">
                     </div>
                     <div class="feature-description">Pojemna bateria 2400mAh z czasem ładowania 8h</div> <!-- Tekst: Opis cechy 3 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <!-- Obrazek: Ikona cechy 4 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_4.webp" alt="Odporność na Warunki Atmosferyczne">
+                        <!-- Obrazek: Ikona cechy 4 (adapter) -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-37.webp" alt="Odporność na Warunki Atmosferyczne">
                     </div>
                     <div class="feature-description">Czas świecenia po naładowaniu solara</div> <!-- Tekst: Opis cechy 4 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
-                        <!-- Obrazek: Ikona cechy 5 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_5.webp" alt="Łatwa Instalacja">
+                        <!-- Obrazek: Ikona cechy 5 (adapter) -->
+                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-38.webp" alt="Łatwa Instalacja">
                     </div>
                     <div class="feature-description">Wysokiej jakości panel solarny o mocy 3W 5V</div> <!-- Tekst: Opis cechy 5 -->
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <!-- Obrazek: Ikona cechy 6 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/pikto_6.webp" alt="Wiele Trybów Świecenia">
-                    </div>
-                    <div class="feature-description">Wbudowany czujnik zmierzchu</div> <!-- Tekst: Opis cechy 6 -->
                 </div>
             </div>
         </section>
@@ -1082,10 +1105,10 @@
         <!-- Sekcja 4: Odkryj możliwości zestawu -->
         <section class="section discovery-section">
             <div class="discovery-content">
-                <h2 class="discovery-title">Odkryj możliwości<br>niepozornego zestawu</h2>
+                <h2 class="discovery-title">Gotowy zestaw<br>do codziennego użytku</h2>
                 <div class="discovery-green-line"></div>
                 <div class="discovery-subtitle">ELEMENTY ZESTAWU</div> <!-- Tekst: Podtytuł sekcji odkrywania -->
-                <ul class="discovery-list">
+                <ul class="discovery-list" style="padding-left: 0;">
                     <!-- Lista elementów zestawu -->
                     <li><span class="discovery-highlight">1x</span> girlanda solarna 30x LED</li> <!-- Tekst: Element listy 1 -->
                     <li><span class="discovery-highlight">1x</span> polikrystaliczny panel solarny</li> <!-- Tekst: Element listy 2 -->
@@ -1097,7 +1120,7 @@
             </div>
             <div class="discovery-image">
                 <!-- Obrazek: Elementy zestawu -->
-                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_3.webp" alt="Elementy zestawu girlandy SOLLIS">
+                <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_3.webp" alt="Elementy zestawu girlandy SOLLIS">
             </div>
         </section>
         
@@ -1147,17 +1170,17 @@
                 <!-- Obrazek: Schemat girlandy -->
                 <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_7.webp" alt="Schemat Girlandy Sollis">
                 <!-- Hotspot Lewy (tooltip po prawej) -->
-                <button class="hotspot" style="top: 62%; left: 3%;" aria-label="Informacja o przewodzie">
+                <button class="sollis-hotspot" style="top: 62%; left: 3%;" aria-label="Informacja o przewodzie">
                     <span class="hotspot-plus">+</span>
                     <!-- Tekst: Tooltip dla hotspotu 1 (schemat) -->
-                    <div class="tooltip">Przewód H03VV-F 2x0,5mm2</div>
+                    <div class="sollis-tooltip">Przewód H03VV-F 2x0,5mm2</div>
                 </button>
 
                 <!-- Hotspot Prawy (tooltip po lewej) -->
-                <button class="hotspot" style="top: 43%; left: 93%;" aria-label="Informacja o panelu słonecznym">
+                <button class="sollis-hotspot" style="top: 43%; left: 93%;" aria-label="Informacja o panelu słonecznym">
                     <span class="hotspot-plus">+</span>
                     <!-- Tekst: Tooltip dla hotspotu 2 (schemat) -->
-                    <div class="tooltip position-left">Zaawansowany panel słoneczny 5V 2400mAh</div>
+                    <div class="sollis-tooltip position-left">Zaawansowany panel słoneczny 5V 2400mAh</div>
                 </button>
             </div>
         </section>
@@ -1173,7 +1196,7 @@
                 <div class="panel-function-item">
                     <div class="panel-function-image">
                         <!-- Obrazek: Funkcja panelu 1 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_8.webp" alt="Ładowanie USB-C">
+                        <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_8.webp" alt="Ładowanie USB-C">
                     </div>
                     <!-- Tekst: Opis funkcji panelu 1 -->
                     <p class="panel-function-description">Opcja ładowania poprzez wejście USB-C dołączonym do zestawu kablem.</p>
@@ -1181,7 +1204,7 @@
                 <div class="panel-function-item">
                     <div class="panel-function-image">
                         <!-- Obrazek: Funkcja panelu 2 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_9.webp" alt="Wskaźnik trybu i baterii">
+                        <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_9.webp" alt="Wskaźnik trybu i baterii">
                     </div>
                     <!-- Tekst: Opis funkcji panelu 2 -->
                     <p class="panel-function-description">Wskaźnik wybranego trybu świecenia oraz naładowania baterii.</p>
@@ -1189,7 +1212,7 @@
                 <div class="panel-function-item">
                     <div class="panel-function-image">
                         <!-- Obrazek: Funkcja panelu 3 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_10.webp" alt="Przyciski ON/OFF i MODE">
+                        <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_10.webp" alt="Przyciski ON/OFF i MODE">
                     </div>
                     <!-- Tekst: Opis funkcji panelu 3 -->
                     <p class="panel-function-description">Włącznik ON/OFF oraz przycisk zmiany trybu świecenia.</p>
@@ -1197,7 +1220,7 @@
                 <div class="panel-function-item">
                     <div class="panel-function-image">
                         <!-- Obrazek: Funkcja panelu 4 -->
-                        <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_11.webp" alt="Wizualizacja trybu i sygnału">
+                        <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_11.webp" alt="Wizualizacja trybu i sygnału">
                     </div>
                     <!-- Tekst: Opis funkcji panelu 4 -->
                     <p class="panel-function-description">Wizualizacja wybranego trybu oraz czujnik sygnału z pilota.</p>
@@ -1214,42 +1237,42 @@
             </div>
             <div class="schematic-image-container pilot-image-container">
                 <!-- Obrazek: Pilot sterujący -->
-                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda_12.webp" alt="Pilot sterujący girlandą Sollis z opisem funkcji">
+                <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_12.webp" alt="Pilot sterujący girlandą Sollis z opisem funkcji">
 
                 <!-- Hotspot 1: ON/OFF -->
-                <button class="hotspot" style="top: 81%; left: 65%;" aria-label="Włącz/Wyłącz">
+                <button class="sollis-hotspot" style="top: 81%; left: 65%;" aria-label="Włącz/Wyłącz">
                     <span class="hotspot-plus">+</span>
-                    <div class="tooltip">Zresetuj timer</div> <!-- Tekst: Tooltip dla hotspotu 1 (pilot) -->
+                    <div class="sollis-tooltip">Zresetuj timer</div> <!-- Tekst: Tooltip dla hotspotu 1 (pilot) -->
                 </button>
 
                 <!-- Hotspot 2: MODE -->
-                <button class="hotspot" style="top: 80%; left: 27%;" aria-label="Tryby świecenia">
+                <button class="sollis-hotspot" style="top: 80%; left: 27%;" aria-label="Tryby świecenia">
                     <span class="hotspot-plus">+</span>
-                    <div class="tooltip">Wyłącz timer</div> <!-- Tekst: Tooltip dla hotspotu 2 (pilot) -->
+                    <div class="sollis-tooltip">Wyłącz timer</div> <!-- Tekst: Tooltip dla hotspotu 2 (pilot) -->
                 </button>
 
                 <!-- Hotspot 3: 3H Timer -->
-                <button class="hotspot" style="top: 20%; left: 30%;" aria-label="Timer 3 godziny">
+                <button class="sollis-hotspot" style="top: 20%; left: 30%;" aria-label="Timer 3 godziny">
                     <span class="hotspot-plus">+</span>
-                    <div class="tooltip">Ustaw limit czasowy na 4H/6H/8H</div> <!-- Tekst: Tooltip dla hotspotu 3 (pilot) -->
+                    <div class="sollis-tooltip">Ustaw limit czasowy na 4H/6H/8H</div> <!-- Tekst: Tooltip dla hotspotu 3 (pilot) -->
                 </button>
                 
                 <!-- Hotspot 4: 8H Timer -->
-                <button class="hotspot" style="top: 9%; left: 52%;" aria-label="Timer 8 godzin">
+                <button class="sollis-hotspot" style="top: 9%; left: 52%;" aria-label="Timer 8 godzin">
                     <span class="hotspot-plus">+</span>
-                    <div class="tooltip">Włącz lub wyłącz girlandę</div> <!-- Tekst: Tooltip dla hotspotu 4 (pilot) -->
+                    <div class="sollis-tooltip">Włącz lub wyłącz girlandę</div> <!-- Tekst: Tooltip dla hotspotu 4 (pilot) -->
                 </button>
 
                 <!-- Hotspot 5: Brightness + -->
-                <button class="hotspot" style="top: 33%; left: 52%;" aria-label="Zwiększ jasność">
+                <button class="sollis-hotspot" style="top: 33%; left: 52%;" aria-label="Zwiększ jasność">
                     <span class="hotspot-plus">+</span>
-                    <div class="tooltip">Zwiększ jasność światła</div> <!-- Tekst: Tooltip dla hotspotu 5 (pilot) -->
+                    <div class="sollis-tooltip">Zwiększ jasność światła</div> <!-- Tekst: Tooltip dla hotspotu 5 (pilot) -->
                 </button>
 
                 <!-- Hotspot 6: Brightness - -->
-                <button class="hotspot" style="top: 59%; left: 51%;" aria-label="Zmniejsz jasność">
+                <button class="sollis-hotspot" style="top: 59%; left: 51%;" aria-label="Zmniejsz jasność">
                     <span class="hotspot-plus">+</span>
-                    <div class="tooltip">Wybierz odpowiedni tryb świecenia</div> <!-- Tekst: Tooltip dla hotspotu 6 (pilot) -->
+                    <div class="sollis-tooltip">Wybierz odpowiedni tryb świecenia</div> <!-- Tekst: Tooltip dla hotspotu 6 (pilot) -->
                 </button>
             </div>
         </section>
@@ -1258,7 +1281,7 @@
         <section class="section adapter-section">
             <div class="adapter-image-container">
                 <!-- Obrazek: Adapter sieciowy -->
-                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/grafiki_girlanda-22.webp" alt="Adapter do podłączenia girlandy do sieci 230V">
+                <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda-22.webp" alt="Adapter do podłączenia girlandy do sieci 230V">
             </div>
             <div class="adapter-content-container">
                 <h2 class="schematic-title">Możliwość podłączenia<br>do sieci 230V</h2> <!-- Tekst: Tytuł sekcji adaptera -->
@@ -1267,7 +1290,7 @@
                     <!-- Tekst: Ostrzeżenie dotyczące adaptera -->
                     UWAGA! Adapter jest do nabycia na osobnej aukcji, nie jest częścią zestawu girlandy.
                 </p>
-                <a href="#" class="adapter-cta-button">
+                <a  href="https://leddo.pl/pl/products/zestaw-girlanda-solarna-sollis-30x-led-2700k-20m-pilot-ip65-adapter-sieciowy-9w-lumiled-35742.html?query_id=1" class="adapter-cta-button">
                     <!-- Tekst: Przycisk CTA adaptera -->
                     KUP ZESTAW: GIRLANDA SOLLIS + ADAPTER ►
                 </a>
@@ -1283,10 +1306,10 @@
             <div id="inspiration-gallery" class="inspiration-gallery-wrapper">
                 <div class="gallery-scroll-container">
                     <!-- Slajdy galerii. Podmień 'src' na prawdziwe ścieżki obrazków i 'alt' na odpowiednie opisy. -->
-                    <div class="gallery-slide"><img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/girlanda_DLOGR_LEDDO__14.webp?v=1750065612470" alt="Inspiracja 1"></div> <!-- Obrazek: Slajd 1 -->
-                    <div class="gallery-slide"><img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/Depositphotos_379967204_XL_1.webp?v=1750065612470" alt="Inspiracja 2"></div> <!-- Obrazek: Slajd 2 -->
-                    <div class="gallery-slide"><img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/Depositphotos_378495904_XL_1.webp?v=1750065612470" alt="Inspiracja 3"></div> <!-- Obrazek: Slajd 3 -->
-                    <div class="gallery-slide"><img src="https://picsum.photos/800/600?random=4" alt="Inspiracja 4"></div> <!-- Obrazek: Slajd 4 (placeholder) -->
+                    <div class="gallery-slide"><img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_13.webp" alt="Inspiracja 1"></div> <!-- Obrazek: Slajd 1 -->
+                    <div class="gallery-slide"><img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_19.webp" alt="Inspiracja 2"></div> <!-- Obrazek: Slajd 2 -->
+                    <div class="gallery-slide"><img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_17.webp" alt="Inspiracja 3"></div> <!-- Obrazek: Slajd 3 -->
+                    <div class="gallery-slide"><img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_18.webp" alt="Inspiracja 4"></div> <!-- Obrazek: Slajd 4 (placeholder) -->
                     <!-- Można łatwo dodać więcej slajdów kopiując powyższy <div class="gallery-slide">...</div> -->
                 </div>
                 <button class="gallery-arrow prev" aria-label="Poprzedni slajd">&lt;</button>
@@ -1316,20 +1339,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Uogólniony kod dla hotspotów
+            /* Uogólniony kod dla hotspotów */
             const hotspotContainers = document.querySelectorAll('.pilot-image-container, .schematic-image-container'); 
 
             hotspotContainers.forEach(container => {
-                const hotspotsInContainer = container.querySelectorAll('.hotspot');
+                const hotspotsInContainer = container.querySelectorAll('.sollis-hotspot');
 
                 hotspotsInContainer.forEach(hotspot => {
-                    hotspot.setAttribute('aria-expanded', 'false'); // Dostępność
+                    hotspot.setAttribute('aria-expanded', 'false'); /* Dostępność */
                     hotspot.addEventListener('click', function(event) {
                         event.stopPropagation();
                         const isCurrentlyActive = this.classList.contains('active');
                         
-                        // Zamknij wszystkie inne hotspoty NA CAŁEJ STRONIE
-                        document.querySelectorAll('.hotspot.active').forEach(hs => {
+                        /* Zamknij wszystkie inne hotspoty NA CAŁEJ STRONIE */
+                        document.querySelectorAll('.sollis-hotspot.active').forEach(hs => {
                             if (hs !== this) {
                                 hs.classList.remove('active');
                                 hs.setAttribute('aria-expanded', 'false');
@@ -1342,21 +1365,21 @@
                 });
             });
 
-            // Globalny listener do zamykania hotspotów po kliknięciu poza nimi
+            /* Globalny listener do zamykania hotspotów po kliknięciu poza nimi */
             document.addEventListener('click', function(event) {
-                if (!event.target.closest('.hotspot')) {
-                    document.querySelectorAll('.hotspot.active').forEach(hotspot => {
+                if (!event.target.closest('.sollis-hotspot')) {
+                    document.querySelectorAll('.sollis-hotspot.active').forEach(hotspot => {
                         hotspot.classList.remove('active');
                         hotspot.setAttribute('aria-expanded', 'false');
                     });
                 }
             });
 
-            // Kod dla galerii inspiracji
+            /* Kod dla galerii inspiracji */
             const gallery = document.getElementById('inspiration-gallery');
             if (gallery) {
                 const container = gallery.querySelector('.gallery-scroll-container');
-                const slides = gallery.querySelectorAll('.gallery-slide');
+                const slides = gallery.querySelectorAll('.gallery-slide'); /* Dodano deklarację slides */
                 const prevButton = gallery.querySelector('.gallery-arrow.prev');
                 const nextButton = gallery.querySelector('.gallery-arrow.next');
                 const dotsNav = gallery.querySelector('.gallery-dots-nav');
@@ -1364,10 +1387,10 @@
                 if (slides.length > 0) {
                     // Generuj kropki
                     slides.forEach((_, index) => {
-                        const dot = document.createElement('button');
+                        const dot = document.createElement('button'); /* Dodano deklarację dot */
                         dot.classList.add('dot');
                         dot.dataset.index = index;
-                        dot.setAttribute('aria-label', `Idź do slajdu ${index + 1}`);
+                        dot.setAttribute('aria-label', `Idź do slajdu ${index + 1}`); /* Poprawiono literówkę w aria-label */
                         dotsNav.appendChild(dot);
                     });
 
@@ -1377,14 +1400,14 @@
                         const scrollLeft = container.scrollLeft;
                         const scrollWidth = container.scrollWidth;
                         const clientWidth = container.clientWidth;
-                        
-                        // Aktualizacja przycisków
+
+                        /* Aktualizacja przycisków */
                         prevButton.disabled = scrollLeft < 1;
                         nextButton.disabled = scrollLeft + clientWidth >= scrollWidth - 1;
 
-                        // Aktualizacja kropek
+                        /* Aktualizacja kropek */
                         const slideWidth = slides[0].offsetWidth;
-                        // const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0
+                        /* const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0 */
                         const currentIndex = Math.round(scrollLeft / slideWidth);
                         
                         dots.forEach((dot, index) => {
@@ -1393,14 +1416,14 @@
                     };
 
                     prevButton.addEventListener('click', () => { // Kliknięcie strzałki "wstecz"
-                        const slideWidth = slides[0].offsetWidth;
-                        // const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0
+                        const slideWidth = slides[0].offsetWidth; /* Dodano deklarację slideWidth */
+                        /* const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0 */
                         container.scrollLeft -= slideWidth;
                     });
 
                     nextButton.addEventListener('click', () => { // Kliknięcie strzałki "dalej"
-                        const slideWidth = slides[0].offsetWidth;
-                        // const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0
+                        const slideWidth = slides[0].offsetWidth; /* Dodano deklarację slideWidth */
+                        /* const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0 */
                         container.scrollLeft += slideWidth;
                     });
 
@@ -1408,8 +1431,8 @@
                         dot.addEventListener('click', () => { // Kliknięcie kropki nawigacyjnej
                             const index = parseInt(dot.dataset.index);
                             const slideWidth = slides[0].offsetWidth;
-                            const gap = parseFloat(getComputedStyle(container).gap);
-                            container.scrollLeft = index * (slideWidth + gap);
+                            /* const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0 */
+                            container.scrollLeft = index * slideWidth; /* Usunięto gap, bo jest 0 */
                         });
                     });
                     
@@ -1429,7 +1452,7 @@
                     updateGalleryState(); // Inicjalny stan
                 }
 
-                // Dodanie obsługi gestów przewijania dla galerii
+                /* Dodanie obsługi gestów przewijania dla galerii */
                 if (container && slides.length > 0) {
                     let touchstartX = 0;
                     let touchendX = 0;
@@ -1445,9 +1468,9 @@
                     }, false);
 
                     function handleSwipeGesture() {
-                        if (touchendX < touchstartX - swipeThreshold) { // Przesunięcie w lewo
+                        if (touchendX < touchstartX - swipeThreshold) { /* Przesunięcie w lewo */
                             if (nextButton && !nextButton.disabled) nextButton.click();
-                        } else if (touchendX > touchstartX + swipeThreshold) { // Przesunięcie w prawo
+                        } else if (touchendX > touchstartX + swipeThreshold) { /* Przesunięcie w prawo */
                             if (prevButton && !prevButton.disabled) prevButton.click();
                         }
                     }
