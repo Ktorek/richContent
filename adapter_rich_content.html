@@ -142,20 +142,20 @@
             display: grid; /* Przywrócenie do grid */
             justify-content: center; /* Centruje elementy w poziomie */
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamiczna siatka z centrowaniem */
-            gap: 15px;
+            gap: 0px;
         }
 
         .feature-item {
             text-align: center;
-            padding: 20px 10px;
+            padding: 1px 5px;
             container-type: inline-size;
             cursor: pointer;
         }
         
         .feature-icon {
-            width: 80cqi;
-            height: 80cqi;
-            margin: 0 auto 15px;
+            width: 60cqi;
+            height: 60cqi;
+            margin: 0 auto 10px;
             border-radius: 50%;
             transition: transform 0.5s ease;
         }
@@ -171,9 +171,10 @@
         }
 
         .feature-description {
-            font-size: 10cqi;
+            font-size: 7.6cqi;
             color: #666;
             line-height: 1.3;
+            padding: 0 10%;
         }
 
         /* Sekcja 3 - Call to action */
@@ -415,7 +416,7 @@
             background-color: white; /* Zmiana tła na białe */
             padding-top: calc(1.2cqi + 40px); /* Zwiększony o 40px */
             padding-right: 4.906cqi;
-            padding-bottom: 2.453cqi; 
+            padding-bottom: 0; /* Usunięto dolny padding */
             padding-left: 4.906cqi;
             display: flex;
             flex-direction: column; /* Ustawienie kierunku na kolumnę */
@@ -429,6 +430,8 @@
             gap: 0; /* Usunięty odstęp między lewą a prawą kolumną tekstu */
             width: 100%;
             align-items: flex-start; /* Aby kolumny nie rozciągały się pionowo nierówno */
+            position: relative; /* Konieczne dla z-index */
+            z-index: 2; /* Ustawia tekst ponad obrazkiem */
         }
 
         .schematic-description-area { /* Nowy kontener dla opisu (lewa kolumna) */
@@ -454,7 +457,7 @@
             width: 3.906cqi;
             height: 0.293cqi;
             background-color: var(--brand-green);
-            margin-top: 1.464cqi;
+            margin-top: 0cqi; /* Zmniejszony margines górny, aby zmniejszyć odstęp od h2 */
             margin-bottom: 2.442cqi;
             margin-left: 0; /* Zapewnienie wyrównania do lewej */
             /* transition: transform 0.3s ease; Usunięto dla nowej animacji */
@@ -475,6 +478,8 @@
             color: #555; /* Lekko ciemniejszy tekst dla czytelności */
             line-height: 1.6;
             font-weight: 200; /* Zmniejszona grubość czcionki */
+            margin-top: 3.7cqi; /* Dodano margines górny, aby przesunąć tekst niżej */
+            padding-right: 3.6cqi;
         }
 
         .schematic-image-container {
@@ -482,19 +487,46 @@
             /* usunięto stary flex: 3; */
             padding: 1.5cqi; /* Dodany padding wokół obrazka */
             position: relative; /* Umożliwia pozycjonowanie absolutne hotspotów */
+            transform: translateY(-100px); /* Przesunięcie całego kontenera obrazka o 100px do góry */
+            z-index: 1; /* Ustawia obrazek pod tekstem */
         }
 
-        .schematic-image-container img {
+        .schematic-image-container > img { /* Zmieniono selektor, aby dotyczył tylko bezpośredniego dziecka (głównego obrazka) */
             width: 100%;
             height: auto;
             display: block;
+            /* transform: translateY(0); */ /* Usunięto transform z img, bo jest na kontenerze */
+        }
+
+        .schematic-image-caption {
+            text-align: center;
+            margin-top: 3cqi; /* Zwiększony margines górny, aby zwiększyć przerwę od zdjęcia */
+            font-size: 1.5cqi;
+            color: #555;
+            line-height: 1.4;
+            font-weight: 300;
+            display: flex; /* Added: Use flexbox for alignment */
+            align-items: center; /* Added: Vertically align items */
+            justify-content: flex-start; /* Changed: Align content to the left */
+            gap: 0.5cqi; /* Added: Space between text and icon */
+        }
+
+        .schematic-image-caption p {
+            margin: 0; /* Remove default paragraph margin */
+            text-align: left; /* Ensure text is left-aligned within its flex item */
+        }
+
+        .schematic-caption-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain; /* Maintain aspect ratio and fit within bounds */
         }
 
         /* Sekcja 7 - Panel Solarny i Funkcje */
         .panel-functions-section {
             background-color: white; /* Zmiana tła na białe */
-            padding: 1.2cqi 4.906cqi 2.453cqi; /* Zmniejszony padding-bottom o połowę */
-            display: flex;
+            padding: 0.25cqi 4.906cqi 2.453cqi; /* Zmniejszony padding-top o połowę */
+            display: flex; /* Already present, no change */
             flex-direction: column;
             align-items: flex-start; /* Wyrównanie dzieci do lewej */
             gap: 1.953cqi; /* Odstęp między nagłówkiem a siatką - dodatkowo zmniejszony (było 2.734cqi) */
@@ -616,6 +648,9 @@
         /* Custom background for pilot section */
         #rich-content-wrapper .pilot-section-custom-bg {
             background-color: white;
+            margin-top: -100px; /* Przesunięcie sekcji do góry, aby skompensować przesunięcie obrazka z sekcji 4 */
+            padding-bottom: 0; /* Zmniejszenie paddingu dolnego do 0 dla tej sekcji */
+            margin-bottom: 0; /* Zmniejszenie marginesu dolnego do 0 dla tej sekcji */
         }
 
         #rich-content-wrapper .sollis-tooltip.position-left {
@@ -1064,45 +1099,107 @@
                         <!-- Obrazek: Ikona cechy 1 (adapter) -->
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-34.webp" alt="Energooszczędność LED">
                     </div>
-                    <div class="feature-description">Biała ciepła barwa światła 2700k</div> <!-- Tekst: Opis cechy 1 -->
+                    <div class="feature-description">Wymiary produktu 9.9x4.2 cm</div> <!-- Tekst: Opis cechy 1 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <!-- Obrazek: Ikona cechy 2 (adapter) -->
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-35.webp" alt="Zasilanie Słoneczne">
                     </div>
-                    <div class="feature-description">Przystosowana do niekorzystnych warunków</div> <!-- Tekst: Opis cechy 2 -->
+                    <div class="feature-description">Podwyższona klasa odpornosci</div> <!-- Tekst: Opis cechy 2 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <!-- Obrazek: Ikona cechy 3 (adapter) -->
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-36.webp" alt="Pilot Zdalnego Sterowania">
                     </div>
-                    <div class="feature-description">Pojemna bateria 2400mAh z czasem ładowania 8h</div> <!-- Tekst: Opis cechy 3 -->
+                    <div class="feature-description">Moc adaptera 4.8W</div> <!-- Tekst: Opis cechy 3 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <!-- Obrazek: Ikona cechy 4 (adapter) -->
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-37.webp" alt="Odporność na Warunki Atmosferyczne">
                     </div>
-                    <div class="feature-description">Czas świecenia po naładowaniu solara</div> <!-- Tekst: Opis cechy 4 -->
+                    <div class="feature-description">Napięcie wejściowe 220-240 V</div> <!-- Tekst: Opis cechy 4 -->
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon">
                         <!-- Obrazek: Ikona cechy 5 (adapter) -->
                         <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_-38.webp" alt="Łatwa Instalacja">
                     </div>
-                    <div class="feature-description">Wysokiej jakości panel solarny o mocy 3W 5V</div> <!-- Tekst: Opis cechy 5 -->
+                    <div class="feature-description">Napięcie wyjściowe 24 V</div> <!-- Tekst: Opis cechy 5 -->
                 </div>
             </div>
         </section>
         
         <!-- Sekcja 3: Call to action -->
         <section class="section cta-section">
-            <h2 class="cta-main-title" id="cta-title">Poznaj możliwości girlandy SOLLIS</h2> <!-- Tekst: Nagłówek CTA -->
+            <h2 class="cta-main-title" id="cta-title">Poznaj możliwości adaptera do girland solarnych</h2> <!-- Tekst: Nagłówek CTA -->
         </section>
         
-        <!-- Sekcja 4: Odkryj możliwości zestawu -->
+        <!-- Sekcja 4: Schemat Girlandy -->
+        <section class="section schematic-section">
+            <div class="schematic-text-content-area">
+                <div class="schematic-content"> <!-- Prawa kolumna: tytuł, linia, podtytuł -->
+                    <h2 class="schematic-title">Wymień panel solarny<br>na adapter</h2> <!-- Tekst: Tytuł sekcji schematu -->
+                    <div class="schematic-green-line"></div>
+                    <h3 class="schematic-subtitle">SCHEMAT GIRLANDY</h3> <!-- Tekst: Podtytuł sekcji schematu -->
+                </div>
+                <div class="schematic-description-area"> <!-- Przeniesiony opis na prawą stronę -->
+                    <p class="schematic-description">
+                        <!-- Tekst: Opis schematu girlandy -->
+                        Efektowne oświetlenie bez względu na pogodę, wystarczy podpiąć do sieci, aby cieszyć się światłem bez zakłóceń.
+                    </p>
+                </div>
+            </div>
+            <div class="schematic-image-container">
+                <!-- Obrazek: Schemat girlandy -->
+                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_-24.webp" alt="Schemat Girlandy Sollis">
+                <div class="schematic-image-caption">
+                    <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pikto_uwaga-39.webp" alt="Kompatybilność" class="schematic-caption-icon">
+                    <p>UWAGA! Po podłączeniu do adaptera, użycie pilota sterującego nie jest możliwe, gdyż funkcja sterująca znajduje<br>się w panelu solarnym.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sekcja 5: Pilot Sterujący -->
+        <section class="section panel-functions-section pilot-section-custom-bg">
+            <div class="panel-functions-header">
+                <h2 class="schematic-title">Adapter do girlandy<wbr>solarnej</h2> <!-- Tekst: Tytuł sekcji pilota -->
+                <div class="schematic-green-line"></div>
+                <h3 class="schematic-subtitle">I JEGO FUNKCJE</h3> <!-- Tekst: Podtytuł sekcji pilota -->
+            </div>
+            <div class="schematic-image-container pilot-image-container">
+                <!-- Obrazek: Pilot sterujący -->
+                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_-25.webp?v=1750668529346" alt="Pilot sterujący girlandą Sollis z opisem funkcji">
+
+                <!-- Hotspot 1: ON/OFF -->
+                <button class="sollis-hotspot" style="top: 22%; left: 47%;" aria-label="Włącz/Wyłącz">
+                    <span class="hotspot-plus">+</span>
+                    <div class="sollis-tooltip">Zresetuj timer</div> <!-- Tekst: Tooltip dla hotspotu 1 (pilot) -->
+                </button>
+
+                <!-- Hotspot 2: MODE -->
+                <button class="sollis-hotspot" style="top: 27%; left: 84%;" aria-label="Tryby świecenia">
+                    <span class="hotspot-plus">+</span>
+                    <div class="sollis-tooltip">Wyłącz timer</div> <!-- Tekst: Tooltip dla hotspotu 2 (pilot) -->
+                </button>
+
+                <!-- Hotspot 3: 3H Timer -->
+                <button class="sollis-hotspot" style="top: 46%; left: 0%;" aria-label="Timer 3 godziny">
+                    <span class="hotspot-plus">+</span>
+                    <div class="sollis-tooltip">Ustaw limit czasowy na 4H/6H/8H</div> <!-- Tekst: Tooltip dla hotspotu 3 (pilot) -->
+                </button>
+                
+                <!-- Hotspot 4: 8H Timer -->
+                <button class="sollis-hotspot" style="top: 64%; left: 32%;" aria-label="Timer 8 godzin">
+                    <span class="hotspot-plus">+</span>
+                    <div class="sollis-tooltip">Włącznik ON/OFF</div> <!-- Tekst: Tooltip dla hotspotu 4 (pilot) -->
+                </button>
+            </div>
+        </section>
+
+        <!-- Sekcja 6: Odkryj możliwości zestawu -->
         <section class="section discovery-section">
             <div class="discovery-content">
                 <h2 class="discovery-title">Gotowy zestaw<br>do codziennego użytku</h2>
@@ -1121,67 +1218,6 @@
             <div class="discovery-image">
                 <!-- Obrazek: Elementy zestawu -->
                 <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_3.webp" alt="Elementy zestawu girlandy SOLLIS">
-            </div>
-        </section>
-        
-        <!-- Sekcja 5: Benefits -->
-        <section class="section benefits-section">
-            <div class="benefits-grid">
-                <div class="benefit-box benefit-box-large">
-                    <div class="benefit-content">
-                        <h3 class="benefit-title">Dłuższe działanie<br>i pełna kontrola</h3> <!-- Tekst: Tytuł korzyści 1 -->
-                        <div class="benefit-green-line"></div>
-                        <p class="benefit-description">Polikrystaliczny panel solarny z wskaźnikiem naładowania zapewnia dłuższe działanie, nawet przy słabym słońcu.</p> <!-- Tekst: Opis korzyści 1 -->
-                    </div>
-                </div>
-                <div class="benefit-box benefit-box-top-right">
-                    <div class="benefit-content">
-                        <h3 class="benefit-title">Bezpieczne<br>i zapasowe</h3> <!-- Tekst: Tytuł korzyści 2 -->
-                        <div class="benefit-green-line"></div>
-                        <p class="benefit-description">Wytrzymałe żarówki E27 są odporne na pęknięcia, a 2 zapasowe sztuki zapewniają spokój na dłużej.</p> <!-- Tekst: Opis korzyści 2 -->
-                    </div>
-                </div>
-                <div class="benefit-box benefit-box-bottom-right">
-                    <div class="benefit-content">
-                        <h3 class="benefit-title">Całoroczne, niezawodne<br>oświetlenie</h3> <!-- Tekst: Tytuł korzyści 3 -->
-                        <div class="benefit-green-line"></div>
-                        <p class="benefit-description">3 sposoby zasilania: solarne, przez USB-C lub z gniazda 230V z dedykowanym adapterem do kupienia osobno.</p> <!-- Tekst: Opis korzyści 3 -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sekcja 6: Schemat Girlandy -->
-        <section class="section schematic-section">
-            <div class="schematic-text-content-area">
-                <div class="schematic-content"> <!-- Prawa kolumna: tytuł, linia, podtytuł -->
-                    <h2 class="schematic-title">Wysokiej jakości<br>łańcuch świetlny</h2> <!-- Tekst: Tytuł sekcji schematu -->
-                    <div class="schematic-green-line"></div>
-                    <h3 class="schematic-subtitle">SCHEMAT GIRLANDY</h3> <!-- Tekst: Podtytuł sekcji schematu -->
-                </div>
-                <div class="schematic-description-area"> <!-- Przeniesiony opis na prawą stronę -->
-                    <p class="schematic-description">
-                        <!-- Tekst: Opis schematu girlandy -->
-                        Girlanda została wykonana z odpornego na skrajne temperatury, 2-&NoBreak;żyłowego, grubego przewodu miedzianego H03VV-F 2x0,5mm². Każde gniazdo żarówki wyposażone jest w kołnierz, który zapewnia wysoką odporność na warunki atmosferyczne.
-                    </p>
-                </div>
-            </div>
-            <div class="schematic-image-container">
-                <!-- Obrazek: Schemat girlandy -->
-                <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_7.webp" alt="Schemat Girlandy Sollis">
-                <!-- Hotspot Lewy (tooltip po prawej) -->
-                <button class="sollis-hotspot" style="top: 62%; left: 3%;" aria-label="Informacja o przewodzie">
-                    <span class="hotspot-plus">+</span>
-                    <!-- Tekst: Tooltip dla hotspotu 1 (schemat) -->
-                    <div class="sollis-tooltip">Przewód H03VV-F 2x0,5mm2</div>
-                </button>
-
-                <!-- Hotspot Prawy (tooltip po lewej) -->
-                <button class="sollis-hotspot" style="top: 43%; left: 93%;" aria-label="Informacja o panelu słonecznym">
-                    <span class="hotspot-plus">+</span>
-                    <!-- Tekst: Tooltip dla hotspotu 2 (schemat) -->
-                    <div class="sollis-tooltip position-left">Zaawansowany panel słoneczny 5V 2400mAh</div>
-                </button>
             </div>
         </section>
         
@@ -1227,53 +1263,31 @@
                 </div>
             </div>
         </section>
-
-        <!-- Sekcja 8: Pilot Sterujący -->
-        <section class="section panel-functions-section pilot-section-custom-bg">
-            <div class="panel-functions-header">
-                <h2 class="schematic-title">Praktyczny pilot sterujący <wbr> o zasięgu 15m</h2> <!-- Tekst: Tytuł sekcji pilota -->
-                <div class="schematic-green-line"></div>
-                <h3 class="schematic-subtitle">I JEGO FUNKCJE</h3> <!-- Tekst: Podtytuł sekcji pilota -->
-            </div>
-            <div class="schematic-image-container pilot-image-container">
-                <!-- Obrazek: Pilot sterujący -->
-                <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_12.webp" alt="Pilot sterujący girlandą Sollis z opisem funkcji">
-
-                <!-- Hotspot 1: ON/OFF -->
-                <button class="sollis-hotspot" style="top: 81%; left: 65%;" aria-label="Włącz/Wyłącz">
-                    <span class="hotspot-plus">+</span>
-                    <div class="sollis-tooltip">Zresetuj timer</div> <!-- Tekst: Tooltip dla hotspotu 1 (pilot) -->
-                </button>
-
-                <!-- Hotspot 2: MODE -->
-                <button class="sollis-hotspot" style="top: 80%; left: 27%;" aria-label="Tryby świecenia">
-                    <span class="hotspot-plus">+</span>
-                    <div class="sollis-tooltip">Wyłącz timer</div> <!-- Tekst: Tooltip dla hotspotu 2 (pilot) -->
-                </button>
-
-                <!-- Hotspot 3: 3H Timer -->
-                <button class="sollis-hotspot" style="top: 20%; left: 30%;" aria-label="Timer 3 godziny">
-                    <span class="hotspot-plus">+</span>
-                    <div class="sollis-tooltip">Ustaw limit czasowy na 4H/6H/8H</div> <!-- Tekst: Tooltip dla hotspotu 3 (pilot) -->
-                </button>
-                
-                <!-- Hotspot 4: 8H Timer -->
-                <button class="sollis-hotspot" style="top: 9%; left: 52%;" aria-label="Timer 8 godzin">
-                    <span class="hotspot-plus">+</span>
-                    <div class="sollis-tooltip">Włącz lub wyłącz girlandę</div> <!-- Tekst: Tooltip dla hotspotu 4 (pilot) -->
-                </button>
-
-                <!-- Hotspot 5: Brightness + -->
-                <button class="sollis-hotspot" style="top: 33%; left: 52%;" aria-label="Zwiększ jasność">
-                    <span class="hotspot-plus">+</span>
-                    <div class="sollis-tooltip">Zwiększ jasność światła</div> <!-- Tekst: Tooltip dla hotspotu 5 (pilot) -->
-                </button>
-
-                <!-- Hotspot 6: Brightness - -->
-                <button class="sollis-hotspot" style="top: 59%; left: 51%;" aria-label="Zmniejsz jasność">
-                    <span class="hotspot-plus">+</span>
-                    <div class="sollis-tooltip">Wybierz odpowiedni tryb świecenia</div> <!-- Tekst: Tooltip dla hotspotu 6 (pilot) -->
-                </button>
+        
+        <!-- Sekcja 8: Benefits -->
+        <section class="section benefits-section">
+            <div class="benefits-grid">
+                <div class="benefit-box benefit-box-large">
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Dłuższe działanie<br>i pełna kontrola</h3> <!-- Tekst: Tytuł korzyści 1 -->
+                        <div class="benefit-green-line"></div>
+                        <p class="benefit-description">Polikrystaliczny panel solarny z wskaźnikiem naładowania zapewnia dłuższe działanie, nawet przy słabym słońcu.</p> <!-- Tekst: Opis korzyści 1 -->
+                    </div>
+                </div>
+                <div class="benefit-box benefit-box-top-right">
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Bezpieczne<br>i zapasowe</h3> <!-- Tekst: Tytuł korzyści 2 -->
+                        <div class="benefit-green-line"></div>
+                        <p class="benefit-description">Wytrzymałe żarówki E27 są odporne na pęknięcia, a 2 zapasowe sztuki zapewniają spokój na dłużej.</p> <!-- Tekst: Opis korzyści 2 -->
+                    </div>
+                </div>
+                <div class="benefit-box benefit-box-bottom-right">
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Całoroczne, niezawodne<br>oświetlenie</h3> <!-- Tekst: Tytuł korzyści 3 -->
+                        <div class="benefit-green-line"></div>
+                        <p class="benefit-description">3 sposoby zasilania: solarne, przez USB-C lub z gniazda 230V z dedykowanym adapterem do kupienia osobno.</p> <!-- Tekst: Opis korzyści 3 -->
+                    </div>
+                </div>
             </div>
         </section>
         
