@@ -326,7 +326,7 @@
             margin-right: auto; /* Centrowanie kontenera */
             margin-top: -7cqi; /* Zwiększone przesunięcie do góry (było -5cqi) */
             position: relative; /* Kluczowe dla pozycjonowania hotspotów i z-index */
-            z-index: 1 !important; /* Ustawia obrazek pod tekstem, dodano !important */
+            z-index: 1 !important; /* Ustawia obrazek pod tekstem, usunięto !important */
             transform: translateZ(0); /* Tworzy nowy kontekst nakładania, aby z-index działał poprawnie */
         }
 
@@ -413,7 +413,76 @@
             z-index: 15; /* Wyższy z-index dla aktywnego hotspotu, aby był nad innymi nieaktywnymi */
         }
         
-        /* Sekcja 6 - Galeria Inspiracji */
+        /* Sekcja 6 - Grid doboru mocy adaptera */
+        .power-grid-container {
+            padding: 0 1.5cqi;
+            box-sizing: border-box; /* Zachowaj box-sizing */
+        }
+
+        .power-adapter-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); /* 7 równych kolumn */
+            grid-template-rows: auto auto; /* 2 rzędy - pierwszy automatyczna wysokość, drugi według aspect-ratio */
+            gap: 1px;
+            width: 100%;
+        }
+
+        /* Pierwszy rząd - komórki z mocami */
+        .power-cell {
+            background-color: #f5f5f5; /* Szare tło jak w sekcji 1 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5cqi;
+            color: var(--dark-text);
+            padding: 15px 8px;
+            padding: 8px 8px; /* Zmniejszony padding pionowy */
+            border: none; /* Usunięto obramowanie */
+            min-height: 34px; /* Zmniejszona minimalna wysokość */
+        }
+
+        /* Pierwsze dwie komórki w pierwszym rzędzie - zajmują po 2 kolumny */
+        .power-cell.power-wide {
+            grid-column: span 2;
+        }
+
+        /* Drugi rząd - komórki z produktami */
+        .product-cell {
+            aspect-ratio: 7/10; /* Ustawiono proporcje szerokość/wysokość na 2/5 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: none; /* Usunięto obramowanie */
+        }
+
+        .product-cell::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Ciemne nakładki dla lepszej czytelności tekstu */
+            z-index: 1;
+        }
+
+        .product-text {
+            color: white;
+            font-weight: normal; /* Zmieniono na cieńszą czcionkę */
+            font-size: 1.2cqi;
+            text-align: center;
+            line-height: 1.2;
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Sekcja 7 - Galeria Inspiracji */
         .inspiration-gallery-wrapper {
             position: relative;
             width: 100%;
@@ -527,7 +596,7 @@
             border-color: #c0c0c0; /* Ciemniejsze obramowanie przy najechaniu */
         }
 
-        /* Sekcja 7 - Wideo YouTube */
+        /* Sekcja 8 - Wideo YouTube */
         .youtube-video-container {
             position: relative;
             width: 100%;
@@ -544,6 +613,45 @@
             width: 100%;
             height: 100%;
             border-radius: 2.5cqi; /* Bardziej zaokrąglone rogi */
+        }
+
+        /* Responsywność - tablet */
+        @media (max-width: 768px) {
+            .power-adapter-grid {
+                grid-template-columns: repeat(2, 1fr); /* Po 2 komórki w rzędzie */
+                gap: 2px;
+            }
+            
+            .power-cell.power-wide {
+                grid-column: span 1; /* Na tabletach wszystkie komórki zajmują 1 kolumnę */
+            }
+            
+            .power-cell {
+                font-size: 14px; /* Zachowano rozmiar czcionki */
+                min-height: 25px; /* Zmniejszona minimalna wysokość dla tabletów */
+                padding: 6px 6px; /* Zmniejszony padding dla tabletów */
+            }
+            
+            .product-text {
+                font-size: 12px;
+            }
+        }
+        /* Responsywność - mobile */
+        @media (max-width: 480px) {
+            .power-adapter-grid {
+                /* gap: 3px; */ /* Zachowano istniejący gap */
+                gap: 3px;
+            }
+            
+            .power-cell {
+                font-size: 12px;
+                padding: 5px 4px; /* Zmniejszony padding dla mobilnych */
+                min-height: 20px; /* Zmniejszona minimalna wysokość dla mobilnych */
+            }
+            
+            .product-text {
+                font-size: 10px;
+            }
         }
 
         /* Responsywność */
@@ -835,7 +943,7 @@
             </div>
             <div class="schematic-image-container pilot-image-container">
                 <!-- Obrazek: Pilot sterujący -->
-                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_-25.webp?v=1750668529346" alt="Pilot sterujący girlandą Sollis z opisem funkcji">
+                <img src="https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_-25.webp?v=1750668529346" alt="Adapter do girlandy Sollis z opisem funkcji">
 
                 <!-- Hotspot 1: ON/OFF -->
                 <button class="sollis-hotspot" style="top: 22%; left: 47%;" aria-label="Włącz/Wyłącz">
@@ -870,8 +978,38 @@
                 <div class="schematic-green-line"></div>
                 <h3 class="schematic-subtitle">DOSTĘPNE MODELE</h3> <!-- Tekst: Podtytuł sekcji pilota -->
             </div>
-            <div class="schematic-image-container pilot-image-container">
-                <!-- do wypełnienia -->
+            <div class="power-grid-container">
+                <div class="power-adapter-grid">
+                    <!-- Pierwszy rząd - moce adapterów -->
+                    <div class="power-cell power-wide">4,8 W</div>
+                    <div class="power-cell power-wide">6 W</div>
+                    <div class="power-cell">6,6 W</div>
+                    <div class="power-cell">8 W</div>
+                    <div class="power-cell">9 W</div>
+                    
+                    <!-- Drugi rząd - produkty z obrazkami -->
+                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_13.webp');">
+                        <div class="product-text">CALLIS 2<br>20 LED</div>
+                    </div>
+                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_19.webp');">
+                        <div class="product-text">SOLLIS<br>15 LED</div>
+                    </div>
+                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_17.webp');">
+                        <div class="product-text">CALLIS 2<br>30 LED</div>
+                    </div>
+                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_18.webp');">
+                        <div class="product-text">PYRIS<br>30 LED</div>
+                    </div>
+                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_13.webp');">
+                        <div class="product-text">SOLLIS<br>22 LED</div>
+                    </div>
+                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_19.webp');">
+                        <div class="product-text">PYRIS<br>40 LED</div>
+                    </div>
+                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_17.webp');">
+                        <div class="product-text">SOLLIS<br>30 LED</div>
+                    </div>
+                </div>
             </div>
         </section>
 
