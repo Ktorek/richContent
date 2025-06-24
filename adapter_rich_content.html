@@ -436,7 +436,6 @@
             font-weight: bold;
             font-size: 1.5cqi;
             color: var(--dark-text);
-            padding: 15px 8px;
             padding: 8px 8px; /* Zmniejszony padding pionowy */
             border: none; /* Usunięto obramowanie */
             min-height: 34px; /* Zmniejszona minimalna wysokość */
@@ -449,8 +448,8 @@
 
         /* Drugi rząd - komórki z produktami */
         .product-cell {
-            aspect-ratio: 7/10; /* Ustawiono proporcje szerokość/wysokość na 2/5 */
-            background-size: cover;
+            aspect-ratio: 7/10; /* Ustawiono proporcje szerokość/wysokość na 7/10 */
+            background-size: 120%; /* Domyślnie obrazek jest 150% większy */
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
@@ -458,6 +457,11 @@
             justify-content: center;
             position: relative;
             border: none; /* Usunięto obramowanie */
+            text-decoration: none; /* Usunięto podkreślenie linku */
+            color: inherit; /* Dziedziczenie koloru */
+            cursor: pointer; /* Kursor wskaźnika */
+            overflow: hidden; /* Ukrywa nadmiar obrazka */
+            transition: background-size 0.3s ease; /* Płynna animacja obrazka */
         }
 
         .product-cell::before {
@@ -467,19 +471,33 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4); /* Ciemne nakładki dla lepszej czytelności tekstu */
             z-index: 1;
+            transition: background 0.3s ease; /* Płynna animacja nakładki */
         }
 
         .product-text {
             color: white;
             font-weight: normal; /* Zmieniono na cieńszą czcionkę */
-            font-size: 1.2cqi;
+            font-size: 1.6cqi; /* Zwiększono rozmiar czcionki */
             text-align: center;
             line-height: 1.2;
             position: relative;
             z-index: 2;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease; /* Płynna animacja tekstu */
+        }
+
+        /* Hover efekty dla komórek produktów */
+        .product-cell:hover {
+            background-size: 100%; /* Na hover obrazek wraca do normalnych rozmiarów */
+        }
+
+        .product-cell:hover .product-text {
+            transform: scale(1.1); /* Powiększenie tekstu na hover */
+        }
+
+        .product-cell:hover::before {
+            background: rgba(0, 0, 0, 0.3); /* Rozjaśnienie nakładki podczas hover */
         }
 
         /* Sekcja 7 - Galeria Inspiracji */
@@ -636,10 +654,10 @@
                 font-size: 12px;
             }
         }
+
         /* Responsywność - mobile */
         @media (max-width: 480px) {
             .power-adapter-grid {
-                /* gap: 3px; */ /* Zachowano istniejący gap */
                 gap: 3px;
             }
             
@@ -987,28 +1005,28 @@
                     <div class="power-cell">8 W</div>
                     <div class="power-cell">9 W</div>
                     
-                    <!-- Drugi rząd - produkty z obrazkami -->
-                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_13.webp');">
+                    <!-- Drugi rząd - produkty z obrazkami (zmienione na linki) -->
+                    <a href="#" class="product-cell" style="background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_callis2_20.webp');">
                         <div class="product-text">CALLIS 2<br>20 LED</div>
-                    </div>
-                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_19.webp');">
+                    </a>
+                    <a href="#" class="product-cell" style="background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_sollis_15.webp');">
                         <div class="product-text">SOLLIS<br>15 LED</div>
-                    </div>
-                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_17.webp');">
+                    </a>
+                    <a href="#" class="product-cell" style="background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_callis_2_30.webp');">
                         <div class="product-text">CALLIS 2<br>30 LED</div>
-                    </div>
-                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_18.webp');">
+                    </a>
+                    <a href="#" class="product-cell" style="background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pyris_30.webp');">
                         <div class="product-text">PYRIS<br>30 LED</div>
-                    </div>
-                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_13.webp');">
+                    </a>
+                    <a href="#" class="product-cell" style="background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_sollis_22.webp');">
                         <div class="product-text">SOLLIS<br>22 LED</div>
-                    </div>
-                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_19.webp');">
+                    </a>
+                    <a href="#" class="product-cell" style="background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_pyris_40.webp');">
                         <div class="product-text">PYRIS<br>40 LED</div>
-                    </div>
-                    <div class="product-cell" style="background-image: url('https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/grafiki_girlanda_17.webp');">
+                    </a>
+                    <a href="#" class="product-cell" style="background-image: url('https://demo7724-pl.yourtechnicaldomain.com/data/include/cms/rich_content/photo_5904422794750_girlanda/adapter_sollis_30.webp');">
                         <div class="product-text">SOLLIS<br>30 LED</div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
