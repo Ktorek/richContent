@@ -144,7 +144,7 @@
 
         .feature-item {
             text-align: center;
-            padding: 20px 10px;
+            padding: 5px;
             container-type: inline-size;
             cursor: pointer;
         }
@@ -229,11 +229,11 @@
         }
 
         #rich-content-wrapper .discovery-subtitle {
-            font-size: 1.367cqi;
+            font-size: 2cqi;
             color: var(--dark-text);
-            font-weight: bold;
-            margin: 0 0 1.953cqi 0;
-            letter-spacing: 0.05em;
+            font-weight: 200;
+            line-height: 1;
+            margin-bottom: 2.953cqi;
         }
 
         .discovery-green-line {
@@ -527,7 +527,7 @@
             width: 100%;
 
             margin-bottom: 1.5cqi; /* Odstęp między obrazkiem a tekstem */
-            background-color: #e0e0e0; /* Tło dla placeholderów */
+            background-color: white; /* Tło dla placeholderów */
             overflow: hidden; /* Ukrywa części obrazu, które wychodzą poza kwadrat */
         }
 
@@ -991,9 +991,10 @@
             }
             #rich-content-wrapper .discovery-title { font-size: 28px !important; } /* Zastępuje 2.344cqi */
             #rich-content-wrapper .discovery-subtitle { 
-                margin-top: 10px;
+                margin-top: 15px;
+                margin-bottom: 15px;
                 font-size: 15px;
-                text-align: left;
+                text-align: center;
             } /* Powiększone o 50% (było 10px) */
             .discovery-green-line { /* Wyśrodkowanie linii w sekcji 4 na mobilnych */
                 margin: 1.464cqi auto 2.442cqi auto;
@@ -1025,6 +1026,12 @@
                 width: 10px;    /* Ustawienie szerokości na 10px dla mobilnych */
                 height: 10px;   /* Ustawienie wysokości na 10px dla mobilnych */
                 margin: 0 4px;  /* Stały margines w px dla mobilnych */
+            }
+        }
+
+        @media (min-width: 769px) {
+            #rich-content-wrapper .gallery-dots-nav .dot:nth-last-child(-n+2) {
+                display: none;
             }
         }
     </style>
@@ -1416,7 +1423,16 @@
                         /* Aktualizacja kropek */
                         const slideWidth = slides[0].offsetWidth;
                         /* const gap = parseFloat(getComputedStyle(container).gap); // Gap jest teraz 0 */
-                        const currentIndex = Math.round(scrollLeft / slideWidth);
+                        let currentIndex = Math.round(scrollLeft / slideWidth);
+                        
+                        // Na desktopie (szerokość > 768px), jeśli jest więcej niż 3 slajdy,
+                        // a bieżący indeks wskazuje na ukrytą kropkę, zaznacz ostatnią widoczną.
+                        if (window.innerWidth > 768 && slides.length > 3) {
+                            const visibleDotsCount = slides.length - 2;
+                            if (currentIndex >= visibleDotsCount) {
+                                currentIndex = visibleDotsCount - 1;
+                            }
+                        }
                         
                         dots.forEach((dot, index) => {
                             dot.classList.toggle('active', index === currentIndex);
