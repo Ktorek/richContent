@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <style>
             :root {
                 --brand-green: #5BBA35;
@@ -23,7 +23,7 @@
             }
 
             body {
-                font-family: "Lato", sans-serif, "Arial", "Helvetica", sans-serif;
+                font-family: "Montserrat", "Arial", "Helvetica", sans-serif;
                 font-size: 16px;
                 line-height: 1.6;
                 color: var(--light-text);
@@ -62,6 +62,7 @@
 
             h1 {
                 font-size: 32px;
+                margin-bottom: 40px; /* Zwiększony odstęp po nagłówku h1 */
             }
 
             .section {
@@ -95,6 +96,13 @@
                 font-size: 16px;
                 line-height: 1.6;
                 color: var(--light-text);
+                /* Dodanie płynnego przejścia dla transformacji */
+                transition: transform 0.3s ease-out;
+            }
+            ul li:hover,
+            ol li:hover {
+                /* Przesunięcie w prawo po najechaniu myszką */
+                transform: translateX(10px);
             }
 
             ul li::marker,
