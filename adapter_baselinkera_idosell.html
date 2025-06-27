@@ -57,11 +57,11 @@
             }
 
             h2 {
-                font-size: 28px;
+                font-size: 29px;
             }
 
             h1 {
-                font-size: 32px;
+                font-size: 33px;
                 margin-bottom: 40px; /* Zwiększony odstęp po nagłówku h1 */
             }
 
@@ -73,12 +73,26 @@
                 border-radius: 8px;
             }
 
-            .section:first-of-type {
-                margin-top: 40px;
+            .promo-image-container {
+                max-width: 1200px;
+                margin: 40px auto;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            .promo-image-container img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .section:nth-child(2) {
+                margin-top: 0;
             }
 
             .text-block p {
-                font-size: 16px;
+                font-size: 18px;
                 margin-bottom: 15px;
                 line-height: 1.6;
                 color: var(--light-text);
@@ -93,7 +107,7 @@
             ul li,
             ol li {
                 margin-bottom: 10px;
-                font-size: 16px;
+                font-size: 18px;
                 line-height: 1.6;
                 color: var(--light-text);
                 /* Dodanie płynnego przejścia dla transformacji */
@@ -138,6 +152,60 @@
                 will-change: transform;
             }
 
+            @media (min-width: 1024px) {
+                /* General Desktop Layout for all sections - All sections are single-column */
+                .section {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                /* Children of sections take full width */
+                .section > .image-container,
+                .section > .text-block {
+                    width: 100%;
+                    max-width: 100%;
+                    margin: 0;
+                }
+
+                /* Specifics for the main title in the first section */
+                .section:nth-child(2) > h1 {
+                    width: 100%;
+                    text-align: center;
+                }
+                .section:nth-child(2) > h1::after {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                /* All images in sections should not be cropped and have auto height */
+                .section .image-container img {
+                    height: auto;
+                    min-height: 0;
+                    object-fit: contain;
+                }
+
+                /* Zwiększenie rozmiaru czcionek dla wersji desktopowej */
+                body {
+                    font-size: 18px; /* Zwiększenie bazowej czcionki */
+                }
+
+                h1 {
+                    font-size: 36px; /* Zwiększenie nagłówka H1 */
+                }
+
+                h2 {
+                    font-size: 30px; /* Zwiększenie nagłówka H2 */
+                }
+
+                .text-block p,
+                ul li,
+                ol li {
+                    font-size: 18px; /* Zwiększenie czcionki dla tekstu w blokach i listach */
+                }
+            }
+
             hr {
                 display: none; /* Ukrywamy domyślne separatory, bo sekcje mają własne tło i marginesy */
             }
@@ -158,6 +226,9 @@
                 h2 {
                     font-size: 24px;
                 }
+                .promo-image-container {
+                    margin: 30px auto;
+                }
                 .text-block p, ul li, ol li {
                     font-size: 15px;
                 }
@@ -174,8 +245,13 @@
                     width: auto;
                     border-radius: 0;
                 }
-                .section:first-of-type {
-                    margin-top: 20px;
+                .promo-image-container {
+                    margin: 20px 15px;
+                    width: auto;
+                    border-radius: 0;
+                }
+                .section:nth-child(2) {
+                    margin-top: 0;
                 }
                 h1 {
                     font-size: 24px;
@@ -194,6 +270,10 @@
                     margin-left: 0;
                     margin-right: 0;
                 }
+                .promo-image-container {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
                 h1 {
                     font-size: 22px;
                 }
@@ -204,6 +284,9 @@
         </style>
     </head>
     <body>
+        <aside class="promo-image-container">
+            <img src="https://leddo.pl/data/include/cms/RICH_CONTENT/LUMSOLZES/lumiled_logo_kolor_trademark_2.webp" alt="Girlanda Solarna Sollis w ogrodzie">
+        </aside>
         <div class="section">
             <h1>Girlanda Solarna Ogrodowa 30x LED Ozdobne Żarówki 20m + PILOT IP65 2700K Ciepła SOLLIS LUMILED</h1>
             <div class="image-container"><img src="https://upload.cdn.baselinker.com/products/3024217/d5390f318246812d2dfca8af752cad5e.jpg" alt="" /></div>
