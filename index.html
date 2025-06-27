@@ -9,24 +9,20 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <style>
             :root {
-                --brand-green: #5BBA35;
-                --dark-text: #292929;
-                --light-text: #555;
-                --background-light: #f9fafb;
-                --border-color: #e5e7eb;
+                --sollis-brand-green: #5BBA35;
+                --sollis-dark-text: #292929;
+                --sollis-light-text: #555;
+                --sollis-background-light: #f9fafb;
+                --sollis-border-color: #e5e7eb;
             }
 
             * {
                 box-sizing: border-box;
                 margin: 0;
-                padding: 0;
             }
 
             body {
-                font-family: "Montserrat", "Arial", "Helvetica", sans-serif;
                 font-size: 16px;
-                line-height: 1.6;
-                color: var(--light-text);
                 background-color: #fff;
                 overflow-x: hidden;
             }
@@ -36,8 +32,8 @@
             div.section h3,
             div.section h4,
             div.section h5,
-            div.section h6 {
-                color: var(--dark-text);
+            div.section h6 { /* Zmieniono nazwy zmiennych CSS na bardziej specyficzne */
+                color: var(--sollis-dark-text);
                 font-weight: bold;
                 line-height: 1.2;
                 position: relative;
@@ -53,7 +49,7 @@
                 left: 0;
                 width: 50px;
                 height: 4px;
-                background-color: var(--brand-green);
+                background-color: var(--sollis-brand-green);
             }
 
             div.section h2 {
@@ -66,10 +62,13 @@
             }
 
             div.section {
+                font-family: "Montserrat", "Arial", "Helvetica", sans-serif;
+                line-height: 1.6;
+                color: var(--sollis-light-text);
                 max-width: 1200px;
                 margin: 0 auto 40px auto;
                 padding: 40px;
-                background-color: var(--background-light);
+                background-color: var(--sollis-background-light);
                 border-radius: 8px;
             }
 
@@ -95,7 +94,7 @@
                 font-size: 18px;
                 margin-bottom: 15px;
                 line-height: 1.6;
-                color: var(--light-text);
+                color: var(--sollis-light-text);
             }
 
             div.section ul,
@@ -115,7 +114,7 @@
                 margin-bottom: 10px;
                 font-size: 18px;
                 line-height: 1.6;
-                color: var(--light-text);
+                color: var(--sollis-light-text);
                 transition: transform 0.3s ease-out;
             }
 
@@ -143,17 +142,17 @@
 
             /* Pozostawiamy domyślne style dla list uporządkowanych (ol) */
             div.section ol li::marker {
-                color: var(--brand-green);
+                color: var(--sollis-brand-green);
                 font-weight: bold;
             }
 
             div.section strong, div.section .bold, div.section .highlight {
-                color: var(--dark-text);
+                color: var(--sollis-dark-text);
                 font-weight: 700;
             }
 
             div.section ul strong {
-                color: var(--brand-green);
+                color: var(--sollis-brand-green);
             }
 
             div.section .image-container {
@@ -251,15 +250,12 @@
                 .promo-image-container {
                     margin: 30px auto;
                 }
-                div.section .text-block p, ul li, ol li {
+                div.section .text-block p, div.section ul li, div.section ol li {
                     font-size: 15px;
                 }
             }
 
             @media (max-width: 768px) {
-                body {
-                    padding: 0;
-                }
                 div.section {
                     padding: 20px;
                     margin-left: 15px;
@@ -281,8 +277,11 @@
                 div.section h2 {
                     font-size: 20px;
                 }
-                div.section .text-block p, ul li, ol li {
-                    font-size: 14px;
+                div.section .text-block p {
+                    font-size: 17px; /* Zwiększona czcionka dla paragrafów w widoku mobilnym */
+                }
+                div.section ul li, div.section ol li {
+                    font-size: 17px;
                 }
             }
 
